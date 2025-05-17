@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "nuxrzmZyctQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\noel\\source\\repos\\FriendsNetwork\\FriendsNetwork.Application\\FriendsNetwork.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\noel\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\noel\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\noel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\noel\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\noel\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

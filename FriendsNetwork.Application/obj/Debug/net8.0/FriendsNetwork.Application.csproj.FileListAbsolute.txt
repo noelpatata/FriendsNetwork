@@ -1,0 +1,15 @@
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\bin\Debug\net8.0\FriendsNetwork.Application.deps.json
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\bin\Debug\net8.0\FriendsNetwork.Application.dll
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\bin\Debug\net8.0\FriendsNetwork.Application.pdb
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\bin\Debug\net8.0\FriendsNetwork.Domain.dll
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\bin\Debug\net8.0\FriendsNetwork.Domain.pdb
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.csproj.AssemblyReference.cache
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.AssemblyInfoInputs.cache
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.AssemblyInfo.cs
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.csproj.CoreCompileInputs.cache
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsN.0AA1ACCA.Up2Date
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.dll
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\refint\FriendsNetwork.Application.dll
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\FriendsNetwork.Application.pdb
+C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Application\obj\Debug\net8.0\ref\FriendsNetwork.Application.dll
