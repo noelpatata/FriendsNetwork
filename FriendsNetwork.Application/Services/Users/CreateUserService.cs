@@ -18,9 +18,6 @@ namespace FriendsNetwork.Application.Services.Users
 
         public Task<User?> CreateUserServiceAsync(string? username, string? password)
         {
-            if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Password is required.");
-
             var (hash, salt) = _passwordHasher.HashPassword(password);
 
             var user = new User

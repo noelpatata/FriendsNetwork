@@ -10,12 +10,12 @@ namespace FriendsNetwork.Application.UseCases.V1.Login
     public class DoLoginUseCase(
  IHandler<DoLoginRequest, DoLoginResponse> handler,
  IValidator<DoLoginRequest> validator,
- IPresenter<DoLoginResponse> presenter)
+ IPresenter<DoLoginResponse?> presenter)
  : IUseCase<DoLoginRequest, AppResponse<DoLoginResponse>>
     {
         private readonly IHandler<DoLoginRequest, DoLoginResponse> _handler = handler;
         private readonly IValidator<DoLoginRequest> _validator = validator;
-        private readonly IPresenter<DoLoginResponse> _presenter = presenter;
+        private readonly IPresenter<DoLoginResponse?> _presenter = presenter;
 
         public async Task<AppResponse<DoLoginResponse>> ExecuteAsync(DoLoginRequest request)
         {

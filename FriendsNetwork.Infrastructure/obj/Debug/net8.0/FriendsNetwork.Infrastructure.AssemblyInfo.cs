@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fedab9d53274ca2c6fa02e876da2f2b23af02147")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb5746ae1aace896a5e68866b9fec40649c09685")]
 [assembly: System.Reflection.AssemblyProductAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

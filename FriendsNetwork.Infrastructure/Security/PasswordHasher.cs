@@ -8,7 +8,7 @@ namespace FriendsNetwork.Infrastructure.Security
 {
     public class PasswordHasher : IPasswordHasher
     {
-        public (string Hash, string Salt) HashPassword(string password)
+        public (string Hash, string Salt) HashPassword(string? password)
         {
             byte[] saltBytes = RandomNumberGenerator.GetBytes(16);
             string salt = Convert.ToBase64String(saltBytes);
@@ -23,8 +23,9 @@ namespace FriendsNetwork.Infrastructure.Security
             return (hash, salt);
         }
 
-        public bool VerifyPassword(string password, string hash, string salt)
+        public bool VerifyPassword(string? password, string? hash, string? salt)
         {
+
             byte[] saltBytes = Convert.FromBase64String(salt);
 
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(

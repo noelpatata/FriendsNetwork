@@ -1,7 +1,4 @@
-﻿using NUnit.Framework;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Moq;
 using FriendsNetwork.Application.Services.Users;  // Adjust namespaces
 using FriendsNetwork.Domain.Entities;
 using FriendsNetwork.Domain.Abstractions.Repositories;
@@ -20,6 +17,7 @@ namespace FriendsNetwork.Tests
         public void Setup()
         {
             _userRepositoryMock = new Mock<IUserRepository>();
+            _passwordHasherMock = new Mock<IPasswordHasher>();
             _createUserService = new CreateUserService(
                 _userRepositoryMock.Object,
                 _passwordHasherMock.Object
