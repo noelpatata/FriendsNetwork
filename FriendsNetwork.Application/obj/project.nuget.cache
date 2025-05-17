@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nuxrzmZyctQ=",
+  "dgSpecHash": "nvPBdZaa5Ao=",
   "success": true,
-  "projectFilePath": "C:\\Users\\noel\\source\\repos\\FriendsNetwork\\FriendsNetwork.Application\\FriendsNetwork.Application.csproj",
+  "projectFilePath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Application\\FriendsNetwork.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noel\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\noel\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",

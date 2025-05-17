@@ -9,3 +9,15 @@ C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0
 C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\refint\FriendsNetwork.Domain.dll
 C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.pdb
 C:\Users\noel\source\repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\ref\FriendsNetwork.Domain.dll
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\bin\Debug\net8.0\FriendsNetwork.Domain.deps.json
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\bin\Debug\net8.0\FriendsNetwork.Domain.dll
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\bin\Debug\net8.0\FriendsNetwork.Domain.pdb
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.AssemblyInfoInputs.cache
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.AssemblyInfo.cs
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.csproj.CoreCompileInputs.cache
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.sourcelink.json
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.dll
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\refint\FriendsNetwork.Domain.dll
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\FriendsNetwork.Domain.pdb
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Domain\obj\Debug\net8.0\ref\FriendsNetwork.Domain.dll
