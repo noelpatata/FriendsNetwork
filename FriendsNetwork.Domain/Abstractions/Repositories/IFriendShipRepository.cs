@@ -2,7 +2,7 @@
 
 namespace FriendsNetwork.Domain.Abstractions.Repositories
 {
-    public interface IFriendShipRepository
+    public interface IFriendshipRepository
     {
         Task<IEnumerable<FriendShip?>?> GetAll(long? userId);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FriendsNetwork.Application.Communication.V1.Requests.Friendships
 {
-    public class DeleteFriendShipRequest
+    public class DeleteFriendshipRequest
     {
         public long? userId { get; set; }
         public Guid? friendOnlineId { get; set; }

@@ -8,17 +8,17 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Application.UseCases.V1.Friendships
 {
-    public class DeleteFriendShipUseCase(
-    IHandler<DeleteFriendShipRequest, DeleteFriendShipResponse> handler,
-    IValidator<DeleteFriendShipRequest> validator,
-    IPresenter<DeleteFriendShipResponse> presenter)
-    : IUseCase<DeleteFriendShipRequest, AppResponse<DeleteFriendShipResponse>>
+    public class DeleteFriendshipUseCase(
+    IHandler<DeleteFriendshipRequest, DeleteFriendshipResponse> handler,
+    IValidator<DeleteFriendshipRequest> validator,
+    IPresenter<DeleteFriendshipResponse> presenter)
+    : IUseCase<DeleteFriendshipRequest, AppResponse<DeleteFriendshipResponse>>
     {
-        private readonly IHandler<DeleteFriendShipRequest, DeleteFriendShipResponse> _handler = handler;
-        private readonly IValidator<DeleteFriendShipRequest> _validator = validator;
-        private readonly IPresenter<DeleteFriendShipResponse> _presenter = presenter;
+        private readonly IHandler<DeleteFriendshipRequest, DeleteFriendshipResponse> _handler = handler;
+        private readonly IValidator<DeleteFriendshipRequest> _validator = validator;
+        private readonly IPresenter<DeleteFriendshipResponse> _presenter = presenter;
 
-        public async Task<AppResponse<DeleteFriendShipResponse>> ExecuteAsync(DeleteFriendShipRequest request)
+        public async Task<AppResponse<DeleteFriendshipResponse>> ExecuteAsync(DeleteFriendshipRequest request)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Friendships
             }
             catch (Exception ex)
             {
-                return new AppResponse<DeleteFriendShipResponse>
+                return new AppResponse<DeleteFriendshipResponse>
                 {
                     success = false,
                     message = ex.Message,

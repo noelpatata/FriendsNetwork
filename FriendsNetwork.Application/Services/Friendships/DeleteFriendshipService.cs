@@ -3,10 +3,10 @@ using FriendsNetwork.Domain.Abstractions.Services.Friendships;
 
 namespace FriendsNetwork.Application.Services.Friendships
 {
-    public class DeleteFriendshipService : IDeleteFriendShipService
+    public class DeleteFriendshipService : IDeleteFriendshipService
     {
-        private readonly IFriendShipRepository _friendShipRepository;
-        public DeleteFriendshipService(IFriendShipRepository friendShipRepository)
+        private readonly IFriendshipRepository _friendShipRepository;
+        public DeleteFriendshipService(IFriendshipRepository friendShipRepository)
         {
             _friendShipRepository = friendShipRepository;
         }

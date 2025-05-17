@@ -16,6 +16,7 @@ namespace FriendsNetwork.Tests
         [SetUp]
         public void Setup()
         {
+            //servicios de pruebas para no depender de bases de datos
             _userRepositoryMock = new Mock<IUserRepository>();
             _passwordHasherMock = new Mock<IPasswordHasher>();
             _createUserService = new CreateUserService(
@@ -28,14 +29,20 @@ namespace FriendsNetwork.Tests
         public void CreateUserServiceAsync_ShouldThrow_WhenPasswordIsNullOrWhitespace()
         {
             // Arrange
+            //preparación del entorno
             string? username = "johndoe";
             string? password = " ";
 
             // Act & Assert
+            //comprueba que se lanza una excepcion ArgumentException
             var ex = Assert.ThrowsAsync<ArgumentException>(() =>
                 _createUserService.CreateUserServiceAsync(username, password));
 
+            // Assert
+            //comprueba que el texto de error es el correcto
             Assert.AreEqual("Password is required.", ex?.Message);
+
+            //verifica que no se han ejecutado los metodos de hash y add
             _passwordHasherMock.Verify(h => h.HashPassword(It.IsAny<string>()), Times.Never);
             _userRepositoryMock.Verify(r => r.Add(It.IsAny<User>()), Times.Never);
         }

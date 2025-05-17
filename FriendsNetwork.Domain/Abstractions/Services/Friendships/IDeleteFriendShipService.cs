@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FriendsNetwork.Domain.Entities;
 namespace FriendsNetwork.Domain.Abstractions.Services.Friendships
 {
-    public interface IDeleteFriendShipService
+    public interface IDeleteFriendshipService
     {
         Task<bool> DeleteFriendShipServiceAsync(long? userId, Guid? friendOnlineId);
 

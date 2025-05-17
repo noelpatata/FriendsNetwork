@@ -9,16 +9,16 @@ using FriendsNetwork.Domain.Responses;
 namespace FriendsNetwork.Application.UseCases.V1.Friendships
 {
     public class GetFriendShipsUseCase(
-    IHandler<GetFriendShipsRequest, GetFriendShipsResponse> handler,
-    IValidator<GetFriendShipsRequest> validator,
-    IPresenter<GetFriendShipsResponse> presenter)
-    : IUseCase<GetFriendShipsRequest, AppResponse<GetFriendShipsResponse>>
+    IHandler<GetFriendshipsRequest, GetFriendshipsResponse> handler,
+    IValidator<GetFriendshipsRequest> validator,
+    IPresenter<GetFriendshipsResponse> presenter)
+    : IUseCase<GetFriendshipsRequest, AppResponse<GetFriendshipsResponse>>
     {
-        private readonly IHandler<GetFriendShipsRequest, GetFriendShipsResponse> _handler = handler;
-        private readonly IValidator<GetFriendShipsRequest> _validator = validator;
-        private readonly IPresenter<GetFriendShipsResponse> _presenter = presenter;
+        private readonly IHandler<GetFriendshipsRequest, GetFriendshipsResponse> _handler = handler;
+        private readonly IValidator<GetFriendshipsRequest> _validator = validator;
+        private readonly IPresenter<GetFriendshipsResponse> _presenter = presenter;
 
-        public async Task<AppResponse<GetFriendShipsResponse>> ExecuteAsync(GetFriendShipsRequest request)
+        public async Task<AppResponse<GetFriendshipsResponse>> ExecuteAsync(GetFriendshipsRequest request)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Friendships
             }
             catch (Exception ex)
             {
-                return new AppResponse<GetFriendShipsResponse>
+                return new AppResponse<GetFriendshipsResponse>
                 {
                     success = false,
                     message = ex.Message,

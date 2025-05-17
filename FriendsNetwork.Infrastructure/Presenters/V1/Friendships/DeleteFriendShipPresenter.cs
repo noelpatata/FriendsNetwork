@@ -4,11 +4,11 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.Friendships
 {
-    public class DeleteFriendShipPresenter: IPresenter<DeleteFriendShipResponse>
+    public class DeleteFriendshipPresenter: IPresenter<DeleteFriendshipResponse>
     {
-        public async Task<AppResponse<DeleteFriendShipResponse?>?> PresentAsync(DeleteFriendShipResponse? response)
+        public async Task<AppResponse<DeleteFriendshipResponse?>?> PresentAsync(DeleteFriendshipResponse? response)
         {
-            return new AppResponse<DeleteFriendShipResponse?>
+            return new AppResponse<DeleteFriendshipResponse?>
             {
                 success = true,
                 content = response,

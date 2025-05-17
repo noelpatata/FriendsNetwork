@@ -2,7 +2,7 @@
 
 namespace FriendsNetwork.Application.Communication.V1.Responses.Friendships
 {
-    public class DeleteFriendShipResponse
+    public class DeleteFriendshipResponse
     {
         public bool deleted { get; set; }
     }

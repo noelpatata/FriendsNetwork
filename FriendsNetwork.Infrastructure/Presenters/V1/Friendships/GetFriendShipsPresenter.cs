@@ -5,11 +5,11 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.Friendships
 {
-    public class GetFriendShipsPresenter : IPresenter<GetFriendShipsResponse>
+    public class GetFriendshipsPresenter : IPresenter<GetFriendshipsResponse>
     {
-        public async Task<AppResponse<GetFriendShipsResponse?>?> PresentAsync(GetFriendShipsResponse? response)
+        public async Task<AppResponse<GetFriendshipsResponse?>?> PresentAsync(GetFriendshipsResponse? response)
         {
-            return new AppResponse<GetFriendShipsResponse?>
+            return new AppResponse<GetFriendshipsResponse?>
             {
                 success = true,
                 content = response,

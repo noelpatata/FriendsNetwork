@@ -7,8 +7,8 @@ namespace FriendsNetwork.Application.Services.Friendships
     public class GetFriendshipsService : IGetFriendShipsService
     {
 
-        private readonly IFriendShipRepository _friendShipRepository;
-        public GetFriendshipsService(IFriendShipRepository friendShipRepository)
+        private readonly IFriendshipRepository _friendShipRepository;
+        public GetFriendshipsService(IFriendshipRepository friendShipRepository)
         {
             _friendShipRepository = friendShipRepository;
         }
