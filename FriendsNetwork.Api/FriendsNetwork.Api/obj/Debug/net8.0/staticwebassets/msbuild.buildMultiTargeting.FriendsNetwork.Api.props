@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FriendsNetwork.Api.props" />
+</Project>
