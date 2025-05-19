@@ -6,14 +6,19 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DotNetEnv;
 
-Env.Load();
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-//inject .env (root directory) in appsettings.json (in Api directory)
-var configBuilder = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddEnvironmentVariables();
+//FriendsNetwork root directory
+var envPath = Path.GetFullPath(Path.Combine(builder.Environment.ContentRootPath, "..", "..", ".env"));
+Env.Load(envPath);
+
+//set host address for the api
+var apiHost = Environment.GetEnvironmentVariable("API_HOST") ?? "https://localhost:5041";
+builder.WebHost.UseUrls(apiHost);
 
 // CORS
 var allowedOrigin = Environment.GetEnvironmentVariable("REACT_APP_ORIGIN") ?? "http://localhost:3000";
@@ -28,10 +33,17 @@ builder.Services.AddCors(options =>
     });
 });
 
+//read .env for building connection string
+var dbHost = Environment.GetEnvironmentVariable("POSTGRESQL_HOST");
+var dbName = Environment.GetEnvironmentVariable("POSTGRESQL_DATABASE");
+var dbUser = Environment.GetEnvironmentVariable("POSTGRESQL_USER");
+var dbPassword = Environment.GetEnvironmentVariable("POSTGRESQL_PASSWORD");
+var connectionString = $"Host={dbHost};Database={dbName};Username={dbUser};Password={dbPassword}";
+
 // PostgreSQL DbContext
 builder.Services.AddDbContext<FriendsNetworkDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
-
+    options.UseNpgsql(connectionString));
+    
 // Register Clean Architecture services
 builder.Services.AddServices()
                 .AddRepositories()
@@ -81,5 +93,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-var apiHost = Environment.GetEnvironmentVariable("API_HOST") ?? "https://localhost:5041";
-app.Run(apiHost);
+
+app.Run();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FriendsNetwork.PosgreSqlRepository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9e648f15710724da471be4ac20efb4f161cab9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b7898efac210a3f5bb3e569eb925808aca03075")]
 [assembly: System.Reflection.AssemblyProductAttribute("FriendsNetwork.PosgreSqlRepository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FriendsNetwork.PosgreSqlRepository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
