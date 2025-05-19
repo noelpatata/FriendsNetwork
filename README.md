@@ -34,6 +34,41 @@ dotnet run
 
 In this case, what im doing is navigating to the API that integrates the business logic from the Clean Architecture, and running its Program.cs.
 
+# Environment variables
+
+This project includes a .env file in the project root directory with the following parameters variables:
+
+``` env
+POSTGRESQL_HOST=172.20.0.190
+POSTGRESQL_DATABASE=FriendsNetwork
+POSTGRESQL_USER=postgres
+POSTGRESQL_PASSWORD=s
+API_HOST=https://172.20.0.190:5041
+REACT_APP_ORIGIN=https://172.20.0.190
+```
+
+With the nugget package *DotNetEnv* im able to load in the *Program.cs* the env variables:
+
+### Load .env file into appsettings.json
+
+``` cs
+using DotNetEnv;
+
+Env.Load();
+
+var configBuilder = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+```
+
+### Retrieve .env variables
+
+``` cs
+var apiHost = Environment.GetEnvironmentVariable("API_HOST") ?? "https://localhost:5041";
+
+```
+
 
 
 

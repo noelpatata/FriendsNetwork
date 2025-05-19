@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a30ceeec285963e5653c1f93f88f3dfa954d8eca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9e648f15710724da471be4ac20efb4f161cab9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FriendsNetwork.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
