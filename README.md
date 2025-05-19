@@ -69,6 +69,14 @@ var apiHost = Environment.GetEnvironmentVariable("API_HOST") ?? "https://localho
 
 ```
 
+### Execute NUnit tests
+
+In the FriendsNetwork.Tests folder theres an NUnit project that with the following instruction executes the unit and integration tests:
+
+``` bash
+dotnet test
+```
+
 
 
 
