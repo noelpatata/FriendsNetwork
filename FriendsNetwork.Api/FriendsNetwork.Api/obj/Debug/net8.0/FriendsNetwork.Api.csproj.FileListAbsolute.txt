@@ -477,3 +477,5 @@ C:/Users/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/obj
 /home/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/obj/Debug/net8.0/FriendsNetwork.Api.pdb
 /home/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/obj/Debug/net8.0/FriendsNetwork.Api.genruntimeconfig.cache
 /home/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/obj/Debug/net8.0/ref/FriendsNetwork.Api.dll
+/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/bin/Debug/net8.0/DotNetEnv.dll
+/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Api/FriendsNetwork.Api/bin/Debug/net8.0/Sprache.dll
