@@ -18,7 +18,7 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    username = table.Column<string>(type: "text", nullable: true),
+                    username = table.Column<string>(type: "text", nullable: false),
                     hashed_password = table.Column<string>(type: "text", nullable: true),
                     salt = table.Column<string>(type: "text", nullable: true),
                     online_id = table.Column<Guid>(type: "uuid", nullable: true)
@@ -64,7 +64,6 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     user_id = table.Column<long>(type: "bigint", nullable: false),
-                    Userid = table.Column<long>(type: "bigint", nullable: false),
                     friend_id = table.Column<long>(type: "bigint", nullable: false),
                     createdAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -73,14 +72,14 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                     table.PrimaryKey("PK_Friendships", x => x.id);
                     table.CheckConstraint("CK_Friendship_NoSelfFriend", "user_id <> friend_id");
                     table.ForeignKey(
-                        name: "FK_Friendships_Users_Userid",
-                        column: x => x.Userid,
+                        name: "FK_Friendships_Users_friend_id",
+                        column: x => x.friend_id,
                         principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Friendships_Users_friend_id",
-                        column: x => x.friend_id,
+                        name: "FK_Friendships_Users_user_id",
+                        column: x => x.user_id,
                         principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -107,11 +106,6 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                 table: "Friendships",
                 columns: new[] { "user_id", "friend_id" },
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Friendships_Userid",
-                table: "Friendships",
-                column: "Userid");
         }
 
         /// <inheritdoc />

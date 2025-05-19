@@ -10,7 +10,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Users
     {
         public GetByUsernameUseCase(
             IHandler<GetByUsernameRequest, GetByUsernameResponse?> handler,
-            IValidator<GetByUsernameRequest> validator,
+            IValidator<GetByUsernameRequest?> validator,
             IPresenter<GetByUsernameResponse> presenter)
             : base(handler, validator, presenter)
         {

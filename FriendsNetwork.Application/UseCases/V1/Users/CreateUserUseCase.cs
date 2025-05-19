@@ -14,7 +14,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Users
     {
         public CreateUserUseCase(
             IHandler<CreateUserRequest, CreateUserResponse?> handler,
-            IValidator<CreateUserRequest> validator,
+            IValidator<CreateUserRequest?> validator,
             IPresenter<CreateUserResponse> presenter)
             : base(handler, validator, presenter)
         {

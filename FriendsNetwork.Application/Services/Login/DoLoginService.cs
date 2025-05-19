@@ -19,6 +19,6 @@ public class DoLoginService(
             throw new InvalidOperationException("Invalid username or password");
         }
 
-        return _tokenGenerator.Generate(user.id)?? "";
+        return _tokenGenerator.Generate(user.id);
     }
 }

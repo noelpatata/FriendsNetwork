@@ -6,14 +6,16 @@ namespace FriendsNetwork.Infrastructure.Presenters.V1.Users
 {
     public class GetByUsernamePresenter : IPresenter<GetByUsernameResponse>
     {
-        public async Task<AppResponse<GetByUsernameResponse?>?> PresentAsync(GetByUsernameResponse? response)
+        public Task<AppResponse<GetByUsernameResponse?>> PresentAsync(GetByUsernameResponse? response)
         {
-            return new AppResponse<GetByUsernameResponse?>
+            var result = new AppResponse<GetByUsernameResponse?>
             {
                 success = true,
                 content = response,
                 message = "User retrieved successfully."
             };
+
+            return Task.FromResult(result);
         }
     }
 }

@@ -18,8 +18,8 @@ namespace FriendsNetwork.Application.UseCases.V1.FriendRequests
     public class SendFriendRequestUseCase : GenericUseCase<SendFriendRequestRequest, SendFriendRequestResponse>
     {
         public SendFriendRequestUseCase(
-            IHandler<SendFriendRequestRequest, SendFriendRequestResponse> handler,
-            IValidator<SendFriendRequestRequest> validator,
+            IHandler<SendFriendRequestRequest, SendFriendRequestResponse?> handler,
+            IValidator<SendFriendRequestRequest?> validator,
             IPresenter<SendFriendRequestResponse> presenter)
             : base(handler, validator, presenter)
         {

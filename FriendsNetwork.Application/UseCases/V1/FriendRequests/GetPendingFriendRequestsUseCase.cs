@@ -9,8 +9,8 @@ namespace FriendsNetwork.Application.UseCases.V1.FriendRequests
     public class GetPendingFriendRequestsUseCase : GenericUseCase<GetPendingFriendRequestsRequest, GetPendingFriendRequestsResponse>
     {
         public GetPendingFriendRequestsUseCase(
-            IHandler<GetPendingFriendRequestsRequest, GetPendingFriendRequestsResponse> handler,
-            IValidator<GetPendingFriendRequestsRequest> validator,
+            IHandler<GetPendingFriendRequestsRequest, GetPendingFriendRequestsResponse?> handler,
+            IValidator<GetPendingFriendRequestsRequest?> validator,
             IPresenter<GetPendingFriendRequestsResponse> presenter)
             : base(handler, validator, presenter)
         {

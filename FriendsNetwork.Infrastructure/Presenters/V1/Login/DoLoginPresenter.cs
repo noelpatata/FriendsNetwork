@@ -4,16 +4,17 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.Login
 {
-    public class DoLoginPresenter : IPresenter<DoLoginResponse>
+    public class DoLoginPresenter : IPresenter<DoLoginResponse?>
     {
-        public async Task<AppResponse<DoLoginResponse?>?> PresentAsync(DoLoginResponse? response)
+        public Task<AppResponse<DoLoginResponse?>> PresentAsync(DoLoginResponse? response)
         {
-            return new AppResponse<DoLoginResponse?>
+            var result = new AppResponse<DoLoginResponse?>
             {
                 success = true,
                 content = response,
                 message = "Logged in successfully."
             };
+            return Task.FromResult(result);
         }
     }
 }

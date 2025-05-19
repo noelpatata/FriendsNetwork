@@ -38,7 +38,7 @@ namespace FriendsNetwork.Api.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> DeleteFriend([FromBody] DeleteFriendshipRequest request)
         {
             var userIdClaim = User.FindFirst("userId")?.Value;

@@ -11,9 +11,9 @@ namespace FriendsNetwork.Application.Handlers.FriendRequests
     {
         private readonly IGetPendingFriendRequestsService _getPendingFridendRequestsService = getPendingFridendRequestsService ?? throw new ArgumentNullException(nameof(getPendingFridendRequestsService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        public async Task<GetPendingFriendRequestsResponse> HandleAsync(GetPendingFriendRequestsRequest request)
+        public async Task<GetPendingFriendRequestsResponse?> HandleAsync(GetPendingFriendRequestsRequest? request)
         {
-            var acceptedFriendRequest = await _getPendingFridendRequestsService.GetPendingFriendRequestsAsync(request.userId);
+            var acceptedFriendRequest = await _getPendingFridendRequestsService.GetPendingFriendRequestsAsync(request!.userId);
             var mappedacceptedFriendRequest = _mapper.Map<IEnumerable<FriendRequestViewModel?>?>(acceptedFriendRequest);
             var mappedAccepted = new GetPendingFriendRequestsResponse
             {

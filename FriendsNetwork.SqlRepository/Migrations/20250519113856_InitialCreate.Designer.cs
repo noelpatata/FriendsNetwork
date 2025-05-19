@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FriendsNetwork.PosgreSqlRepository.Migrations
 {
     [DbContext(typeof(FriendsNetworkDbContext))]
-    [Migration("20250519012806_InitialCreate")]
+    [Migration("20250519113856_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -66,9 +66,6 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("id"));
 
-                    b.Property<long>("Userid")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -79,8 +76,6 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("id");
-
-                    b.HasIndex("Userid");
 
                     b.HasIndex("friend_id");
 
@@ -111,6 +106,7 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("username")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -139,15 +135,15 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
 
             modelBuilder.Entity("FriendsNetwork.Domain.Entities.Friendship", b =>
                 {
-                    b.HasOne("FriendsNetwork.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("Userid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FriendsNetwork.Domain.Entities.User", "Friend")
                         .WithMany("FriendsOf")
                         .HasForeignKey("friend_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FriendsNetwork.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

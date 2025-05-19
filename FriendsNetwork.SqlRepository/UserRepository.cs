@@ -13,6 +13,9 @@ namespace FriendsNetwork.PosgreSqlRepository
         {
             try
             {
+                if(user == null)
+                    throw new ArgumentNullException(nameof(user));
+
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
                 return user;

@@ -9,6 +9,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Users
 {
     public interface ICreateUserService
     {
-        Task<User?> CreateUserServiceAsync(string? username, string? password);
+        Task<User?> CreateUserServiceAsync(string username, string password);
     }
 }

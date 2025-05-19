@@ -49,8 +49,8 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = config["JwtSettings:Issuer"],
         ValidAudience = config["JwtSettings:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"])),
-        TokenDecryptionKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:EncryptKey"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"] ?? "")),
+        TokenDecryptionKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:EncryptKey"] ?? ""))
     };
 });
 

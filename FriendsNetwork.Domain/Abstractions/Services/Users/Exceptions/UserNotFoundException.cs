@@ -19,9 +19,5 @@ namespace FriendsNetwork.Application.Services.Users.Exceptions
         {
         }
 
-        protected UserNotFoundException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
     }
 }

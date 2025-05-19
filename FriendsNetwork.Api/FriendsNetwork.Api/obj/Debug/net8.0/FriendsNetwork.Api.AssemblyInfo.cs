@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FriendsNetwork.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bffff34e05f8ff0aa5c014ab3fa001414b32b89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef1c72850dd565bc4fc68cb6bf9dc11e67003371")]
 [assembly: System.Reflection.AssemblyProductAttribute("FriendsNetwork.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FriendsNetwork.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

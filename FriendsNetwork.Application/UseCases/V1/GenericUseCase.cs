@@ -8,15 +8,15 @@ namespace FriendsNetwork.Application.UseCases.V1
 {
     public class GenericUseCase<TRequest, TResponse>(
         IHandler<TRequest, TResponse?> handler,
-        IValidator<TRequest> validator,
+        IValidator<TRequest?> validator,
         IPresenter<TResponse> presenter)
         : IUseCase<TRequest, AppResponse<TResponse?>>
     {
         private readonly IHandler<TRequest, TResponse?> _handler = handler;
-        private readonly IValidator<TRequest> _validator = validator;
+        private readonly IValidator<TRequest?> _validator = validator;
         private readonly IPresenter<TResponse> _presenter = presenter;
 
-        public async Task<AppResponse<TResponse?>> ExecuteAsync(TRequest request)
+        public async Task<AppResponse<TResponse?>> ExecuteAsync(TRequest? request)
         {
             try
             {

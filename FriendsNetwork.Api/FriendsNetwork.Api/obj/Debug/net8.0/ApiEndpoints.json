@@ -1,34 +1,8 @@
 [
   {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
-    "Method": "GetAll",
-    "RelativePath": "api/Friendship",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
-    "Method": "DeleteFriend",
-    "RelativePath": "api/Friendship",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FriendsNetwork.Application.Communication.V1.Requests.Friendships.DeleteFriendshipRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendRequestController",
     "Method": "GetPendingFriendRequests",
-    "RelativePath": "api/FriendsRequest",
+    "RelativePath": "api/FriendRequest",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -36,9 +10,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendRequestController",
     "Method": "AcceptFriendRequest",
-    "RelativePath": "api/FriendsRequest/accept",
+    "RelativePath": "api/FriendRequest/accept",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -52,9 +26,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendRequestController",
     "Method": "DenyFriendRequest",
-    "RelativePath": "api/FriendsRequest/deny",
+    "RelativePath": "api/FriendRequest/deny",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -68,9 +42,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendRequestController",
     "Method": "SendFriendRequest",
-    "RelativePath": "api/FriendsRequest/send",
+    "RelativePath": "api/FriendRequest/send",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -78,6 +52,32 @@
       {
         "Name": "r",
         "Type": "FriendsNetwork.Application.Communication.V1.Requests.FriendRequests.SendFriendRequestRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
+    "Method": "GetAll",
+    "RelativePath": "api/Friendship",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
+    "Method": "DeleteFriend",
+    "RelativePath": "api/Friendship",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FriendsNetwork.Application.Communication.V1.Requests.Friendships.DeleteFriendshipRequest",
         "IsRequired": true
       }
     ],

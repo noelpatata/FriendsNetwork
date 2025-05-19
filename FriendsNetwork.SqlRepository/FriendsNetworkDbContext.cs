@@ -19,7 +19,7 @@ namespace FriendsNetwork.SqlRepository.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-            //friend class constraints
+            //friendship constraints
             modelBuilder.Entity<Friendship>()
                 .HasIndex(f => new { f.user_id, f.friend_id })
                 .IsUnique();
@@ -28,12 +28,18 @@ namespace FriendsNetwork.SqlRepository.Contexts
                 .ToTable(t => t.HasCheckConstraint("CK_Friendship_NoSelfFriend", "user_id <> friend_id"));
 
             modelBuilder.Entity<Friendship>()
+                .HasOne(f => f.User)
+                .WithMany()
+                .HasForeignKey(f => f.user_id)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.Friend)
                 .WithMany(u => u.FriendsOf)
                 .HasForeignKey(f => f.friend_id)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // FriendRequestClass constraints
+            // FriendRequest constraints
             modelBuilder.Entity<FriendRequest>()
                 .HasIndex(f => new { f.sender_id, f.receiver_id })
                 .IsUnique(); // Prevent duplicate requests

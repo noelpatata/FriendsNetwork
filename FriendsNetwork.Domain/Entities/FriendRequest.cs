@@ -12,9 +12,9 @@ namespace FriendsNetwork.Domain.Entities
     {
         public long id { get; set; }
         public long sender_id { get; set; }
-        public User Sender { get; set; }
+        public User Sender { get; set; } = null!;
         public long receiver_id { get; set; }
-        public User Receiver { get; set; }
+        public User Receiver { get; set; } = null!;
         public bool accepted { get; set; } = false;
         public DateTime sentAt { get; set; } = DateTime.UtcNow;
     }

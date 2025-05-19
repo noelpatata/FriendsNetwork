@@ -74,21 +74,21 @@ namespace FriendsNetwork.Infrastructure.IoC
         public static IServiceCollection AddPresenters(this IServiceCollection services)
         {
             //login
-            services.AddSingleton<IPresenter<DoLoginResponse>, DoLoginPresenter>();
+            services.AddSingleton<IPresenter<DoLoginResponse?>, DoLoginPresenter>();
 
             //users
-            services.AddSingleton<IPresenter<GetUsersResponse>, GetUsersPresenter>();
-            services.AddSingleton<IPresenter<CreateUserResponse>, CreateUserPresenter>();
+            services.AddSingleton<IPresenter<GetUsersResponse?>, GetUsersPresenter>();
+            services.AddSingleton<IPresenter<CreateUserResponse?>, CreateUserPresenter>();
 
             //friendships
-            services.AddSingleton<IPresenter<GetFriendshipsResponse>, GetFriendshipsPresenter>();
-            services.AddSingleton<IPresenter<DeleteFriendshipResponse>, DeleteFriendshipPresenter>();
+            services.AddSingleton<IPresenter<GetFriendshipsResponse?>, GetFriendshipsPresenter>();
+            services.AddSingleton<IPresenter<DeleteFriendshipResponse?>, DeleteFriendshipPresenter>();
 
             //friend requests
-            services.AddSingleton<IPresenter<SendFriendRequestResponse>, SendFriendRequestPresenter>();
-            services.AddSingleton<IPresenter<DenyFriendRequestResponse>, DenyFriendRequestPresenter>();
-            services.AddSingleton<IPresenter<AcceptFriendRequestResponse>, AcceptFriendRequestPresenter>();
-            services.AddSingleton<IPresenter<GetPendingFriendRequestsResponse>, GetPendingFriendRequestsPresenter>();
+            services.AddSingleton<IPresenter<SendFriendRequestResponse?>, SendFriendRequestPresenter>();
+            services.AddSingleton<IPresenter<DenyFriendRequestResponse?>, DenyFriendRequestPresenter>();
+            services.AddSingleton<IPresenter<AcceptFriendRequestResponse?>, AcceptFriendRequestPresenter>();
+            services.AddSingleton<IPresenter<GetPendingFriendRequestsResponse?>, GetPendingFriendRequestsPresenter>();
             return services;
         }
 

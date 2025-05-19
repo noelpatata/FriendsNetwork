@@ -34,12 +34,12 @@ namespace FriendsNetwork.PosgreSqlRepository
                 var newFriend1 = new Friendship
                 {
                     user_id = userId ?? 0,
-                    friend_id = senderUser.id ?? 0
+                    friend_id = senderUser.id
                 };
 
                 var newFriend2 = new Friendship
                 {
-                    user_id = senderUser.id ?? 0,
+                    user_id = senderUser.id,
                     friend_id = userId ?? 0
                 };
                 await _dbContext.Friendships.AddRangeAsync([newFriend1, newFriend2]);
@@ -113,10 +113,15 @@ namespace FriendsNetwork.PosgreSqlRepository
 
                 if (userId == targetUser.id)
                     throw new CannotAddYourSelfException();
+
+                var existingRequest = await _dbContext.FriendRequests
+                    .FirstOrDefaultAsync(x => x.sender_id == userId && x.receiver_id == targetUser.id);
+                    
+
                 var newFriendRequest = new FriendRequest
                 {
                     sender_id = userId ?? 0,
-                    receiver_id = targetUser.id ?? 0,
+                    receiver_id = targetUser.id,
                     Receiver = targetUser
 
                 };

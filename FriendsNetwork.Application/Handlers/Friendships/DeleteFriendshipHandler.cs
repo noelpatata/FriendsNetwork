@@ -10,9 +10,9 @@ namespace FriendsNetwork.Application.Handlers.Friendships
     {
         private readonly IDeleteFriendshipService _deleteFriendService = deleteFriendService ?? throw new ArgumentNullException(nameof(deleteFriendService));
         
-        public async Task<DeleteFriendshipResponse> HandleAsync(DeleteFriendshipRequest request)
+        public async Task<DeleteFriendshipResponse?> HandleAsync(DeleteFriendshipRequest? request)
         {
-            var deleted = await _deleteFriendService.DeleteFriendShipServiceAsync(request.userId, request.friendOnlineId);
+            var deleted = await _deleteFriendService.DeleteFriendShipServiceAsync(request!.userId, request.friendOnlineId);
 
             var mappedDeleted = new DeleteFriendshipResponse
             {

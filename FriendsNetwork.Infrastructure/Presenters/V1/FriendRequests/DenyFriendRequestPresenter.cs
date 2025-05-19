@@ -4,16 +4,17 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.FriendRequests
 {
-    public class DenyFriendRequestPresenter : IPresenter<DenyFriendRequestResponse>
+    public class DenyFriendRequestPresenter : IPresenter<DenyFriendRequestResponse?>
     {
-        public async Task<AppResponse<DenyFriendRequestResponse?>> PresentAsync(DenyFriendRequestResponse? response)
+        public Task<AppResponse<DenyFriendRequestResponse?>> PresentAsync(DenyFriendRequestResponse? response)
         {
-            return new AppResponse<DenyFriendRequestResponse?>
+            var result = new AppResponse<DenyFriendRequestResponse?>
             {
                 success = true,
                 content = response,
                 message = "Friend request denied successfully."
             };
+            return Task.FromResult(result);
         }
     }
 }

@@ -4,16 +4,18 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.FriendsNetwork.Infrastructure.Presenters.V1.Users
 {
-    public class CreateUserPresenter :IPresenter<CreateUserResponse>
+    public class CreateUserPresenter :IPresenter<CreateUserResponse?>
     {
-        public async Task<AppResponse<CreateUserResponse?>?> PresentAsync(CreateUserResponse? response)
+        public Task<AppResponse<CreateUserResponse?>> PresentAsync(CreateUserResponse? response)
         {
-            return new AppResponse<CreateUserResponse?>
+            var result = new AppResponse<CreateUserResponse?>
             {
                 success = true,
                 content = response,
                 message = "User created successfully."
             };
+
+            return Task.FromResult(result);
         }
     }
 }

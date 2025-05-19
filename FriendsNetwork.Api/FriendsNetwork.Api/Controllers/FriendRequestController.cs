@@ -8,7 +8,7 @@ namespace FriendsNetwork.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class FriendsRequestController(
+    public class FriendRequestController(
             IUseCase<AcceptFriendRequestRequest, AppResponse<AcceptFriendRequestResponse>> acceptFriendRequest,
             IUseCase<DenyFriendRequestRequest, AppResponse<DenyFriendRequestResponse>> denyFriendRequest,
             IUseCase<SendFriendRequestRequest, AppResponse<SendFriendRequestResponse>> sendFriendRequest,

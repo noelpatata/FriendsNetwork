@@ -5,6 +5,6 @@ namespace FriendsNetwork.Application.Communication.V1.Requests.FriendResponse
 {
     public class SendFriendRequestResponse
     {
-        public FriendRequestViewModel? viewModel { get; set; }
+        public SendFriendRequestViewModel? viewModel { get; set; }
     }
 }

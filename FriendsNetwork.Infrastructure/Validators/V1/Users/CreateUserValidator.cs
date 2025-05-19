@@ -7,6 +7,9 @@ namespace FriendsNetwork.Infrastructure.Validators.V1.Users
     {
         public CreateUserValidator()
         {
+            RuleFor(x => x)
+                .NotNull().WithMessage("Request cannot be null.");
+
             RuleFor(x => x.username)
                 .NotEmpty().WithMessage("Username cannot be empty.")
                 .NotNull().WithMessage("Username cannot be null.")

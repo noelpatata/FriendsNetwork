@@ -9,8 +9,8 @@ namespace FriendsNetwork.Application.UseCases.V1.FriendRequests
     public class AcceptFriendRequestUseCase : GenericUseCase<AcceptFriendRequestRequest, AcceptFriendRequestResponse>
     {
         public AcceptFriendRequestUseCase(
-            IHandler<AcceptFriendRequestRequest, AcceptFriendRequestResponse> handler,
-            IValidator<AcceptFriendRequestRequest> validator,
+            IHandler<AcceptFriendRequestRequest, AcceptFriendRequestResponse?> handler,
+            IValidator<AcceptFriendRequestRequest?> validator,
             IPresenter<AcceptFriendRequestResponse> presenter)
             : base(handler, validator, presenter)
         {

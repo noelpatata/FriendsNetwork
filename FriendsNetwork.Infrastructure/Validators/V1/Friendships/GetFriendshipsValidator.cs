@@ -12,6 +12,9 @@ namespace FriendsNetwork.Infrastructure.Validators.V1.Friendships
     {
         public GetFriendshipsValidator()
         {
+            RuleFor(x => x)
+                .NotNull().WithMessage("Request cannot be null.");
+
             RuleFor(x => x.userId)
                 .NotEmpty()
                 .WithMessage("UserId is required.");

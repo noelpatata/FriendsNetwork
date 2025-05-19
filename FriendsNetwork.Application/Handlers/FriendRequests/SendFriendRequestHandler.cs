@@ -11,10 +11,10 @@ namespace FriendsNetwork.Application.Handlers.FriendRequests
     {
         private readonly ISendFriendRequestService _sendFriendRequestService = sendFriendRequestService ?? throw new ArgumentNullException(nameof(sendFriendRequestService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        public async Task<SendFriendRequestResponse> HandleAsync(SendFriendRequestRequest request)
+        public async Task<SendFriendRequestResponse?> HandleAsync(SendFriendRequestRequest? request)
         {
-            var acceptedFriendRequest = await _sendFriendRequestService.SendFriendRequestAsync(request.userId, request.FriendOnlineId);
-            var mappedacceptedFriendRequest = _mapper.Map<FriendRequestViewModel?>(acceptedFriendRequest);
+            var acceptedFriendRequest = await _sendFriendRequestService.SendFriendRequestAsync(request!.userId, request.FriendOnlineId);
+            var mappedacceptedFriendRequest = _mapper.Map<SendFriendRequestViewModel?>(acceptedFriendRequest);
             var mappedAccepted = new SendFriendRequestResponse
             {
                 viewModel = mappedacceptedFriendRequest

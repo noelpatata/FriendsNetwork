@@ -6,6 +6,9 @@ namespace FriendsNetwork.Infrastructure.Validators.V1.Login
     public class DoLoginValidator : AbstractValidator<DoLoginRequest>
     {
         public DoLoginValidator() {
+
+            RuleFor(x => x)
+                .NotNull().WithMessage("Request cannot be null.");
             RuleFor(x => x.username)
                 .NotEmpty().WithMessage("Username cannot be empty.")
                 .NotNull().WithMessage("Username cannot be null.")

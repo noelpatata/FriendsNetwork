@@ -12,7 +12,7 @@ namespace FriendsNetwork.Application.Handlers.Users
         private readonly IGetUsersService _userGetService = userGetService ?? throw new ArgumentNullException(nameof(userGetService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
-        public async Task<GetUsersResponse> HandleAsync(GetUsersRequest request)
+        public async Task<GetUsersResponse?> HandleAsync(GetUsersRequest? request)
         {
             var user = await _userGetService.GetUsersServiceAsync();
 

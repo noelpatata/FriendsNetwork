@@ -4,16 +4,18 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.Users
 {
-    public class GetUsersPresenter : IPresenter<GetUsersResponse>
+    public class GetUsersPresenter : IPresenter<GetUsersResponse?>
     {
-        public async Task<AppResponse<GetUsersResponse?>?> PresentAsync(GetUsersResponse? response)
+        public Task<AppResponse<GetUsersResponse?>> PresentAsync(GetUsersResponse? response)
         {
-            return new AppResponse<GetUsersResponse?>
+            var result = new AppResponse<GetUsersResponse?>
             {
                 success = true,
                 content = response,
                 message = "Users retrieved successfully."
             };
+
+            return Task.FromResult(result);
         }
     }
 }

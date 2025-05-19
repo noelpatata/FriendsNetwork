@@ -12,9 +12,9 @@ namespace FriendsNetwork.Application.Handlers.Users
         private readonly IGetByUsernameService _userGetService = userGetService ?? throw new ArgumentNullException(nameof(userGetService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
-        public async Task<GetByUsernameResponse> HandleAsync(GetByUsernameRequest request)
+        public async Task<GetByUsernameResponse?> HandleAsync(GetByUsernameRequest? request)
         {
-            var user = await _userGetService.GetByUsernameServiceAsync(request.username);
+            var user = await _userGetService.GetByUsernameServiceAsync(request!.username);
 
             var mappedUser = _mapper.Map<UserHashViewModel?>(user);
 

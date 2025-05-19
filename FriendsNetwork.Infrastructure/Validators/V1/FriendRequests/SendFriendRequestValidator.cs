@@ -12,6 +12,8 @@ namespace FriendsNetwork.Infrastructure.Validators.V1.FriendRequests
     {
         public SendFriendRequestValidator()
         {
+            RuleFor(x => x)
+                .NotNull().WithMessage("Request cannot be null.");
 
             RuleFor(x => x.FriendOnlineId)
                 .NotEmpty()

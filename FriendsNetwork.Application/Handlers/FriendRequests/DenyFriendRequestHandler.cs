@@ -11,9 +11,9 @@ namespace FriendsNetwork.Application.Handlers.FriendRequests
     {
         private readonly IDenyFriendRequestService _denyFridendRequestService = denyFridnRequestService ?? throw new ArgumentNullException(nameof(denyFridnRequestService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        public async Task<DenyFriendRequestResponse> HandleAsync(DenyFriendRequestRequest request)
+        public async Task<DenyFriendRequestResponse?> HandleAsync(DenyFriendRequestRequest? request)
         {
-            var acceptedFriendRequest = await _denyFridendRequestService.DenyFriendRequestAsync(request.userId, request.FriendOnlineId);
+            var acceptedFriendRequest = await _denyFridendRequestService.DenyFriendRequestAsync(request!.userId, request.FriendOnlineId);
             var mappedacceptedFriendRequest = _mapper.Map<FriendRequestViewModel?>(acceptedFriendRequest);
             var mappedAccepted = new DenyFriendRequestResponse
             {

@@ -18,10 +18,5 @@ namespace FriendsNetwork.Application.Services.FriendRequests.Exceptions
             : base(message, innerException)
         {
         }
-
-        protected CannotAddYourSelfException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
     }
 }

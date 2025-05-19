@@ -16,9 +16,9 @@ public class DoLoginHandler : IHandler<DoLoginRequest, DoLoginResponse>
         _mapper = mapper;
     }
 
-    public async Task<DoLoginResponse> HandleAsync(DoLoginRequest request)
+    public async Task<DoLoginResponse?> HandleAsync(DoLoginRequest? request)
     {
-        var token = await _doLoginService.DoLoginServiceAsync(request.username, request.password);
+        var token = await _doLoginService.DoLoginServiceAsync(request!.username!, request.password!);
         var mappedToken = new LoginViewModel
         {
             token = token

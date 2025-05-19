@@ -12,9 +12,9 @@ namespace FriendsNetwork.Application.Handlers.Friendships
         private readonly IGetFriendShipsService _friendService = getFriendShipsService ?? throw new ArgumentNullException(nameof(getFriendShipsService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
-        public async Task<GetFriendshipsResponse> HandleAsync(GetFriendshipsRequest request)
+        public async Task<GetFriendshipsResponse?> HandleAsync(GetFriendshipsRequest? request)
         {
-            var friends = await _friendService.GetFriendShipsServiceAsync(request.userId);
+            var friends = await _friendService.GetFriendShipsServiceAsync(request!.userId);
 
             var mappedFriends = _mapper.Map<IEnumerable<FriendShipViewModel?>?>(friends);
 

@@ -8,7 +8,7 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Login
 {
     public interface IDoLoginService
     {
-        Task<string?> DoLoginServiceAsync(string? username, string? password);
+        Task<string> DoLoginServiceAsync(string username, string password);
 
     }
 }

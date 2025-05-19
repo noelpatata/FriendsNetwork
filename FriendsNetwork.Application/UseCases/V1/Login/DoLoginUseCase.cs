@@ -11,7 +11,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Login
     {
         public DoLoginUseCase(
             IHandler<DoLoginRequest, DoLoginResponse?> handler,
-            IValidator<DoLoginRequest> validator,
+            IValidator<DoLoginRequest?> validator,
             IPresenter<DoLoginResponse> presenter)
             : base(handler, validator, presenter)
         {

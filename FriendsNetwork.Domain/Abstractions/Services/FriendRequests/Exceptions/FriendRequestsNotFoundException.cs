@@ -24,9 +24,5 @@ namespace FriendsNetwork.Domain.Abstractions.Services.FriendRequests.Exceptions
         {
         }
 
-        protected FriendRequestsNotFoundException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
     }
 }

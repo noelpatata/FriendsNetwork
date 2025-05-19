@@ -8,6 +8,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Security
 {
     public interface ITokenGenerator
     {
-        string? Generate(long? userId);
+        string Generate(long userId);
     }
 }

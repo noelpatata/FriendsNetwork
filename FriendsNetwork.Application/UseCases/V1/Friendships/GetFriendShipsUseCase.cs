@@ -12,7 +12,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Friendships
     {
         public GetFriendshipsUseCase(
             IHandler<GetFriendshipsRequest, GetFriendshipsResponse?> handler,
-            IValidator<GetFriendshipsRequest> validator,
+            IValidator<GetFriendshipsRequest?> validator,
             IPresenter<GetFriendshipsResponse> presenter)
             : base(handler, validator, presenter)
         {

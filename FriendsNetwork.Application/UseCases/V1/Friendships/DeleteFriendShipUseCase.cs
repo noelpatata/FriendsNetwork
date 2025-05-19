@@ -14,7 +14,7 @@ namespace FriendsNetwork.Application.UseCases.V1.Friendships
     {
         public DeleteFriendshipUseCase(
             IHandler<DeleteFriendshipRequest, DeleteFriendshipResponse?> handler,
-            IValidator<DeleteFriendshipRequest> validator,
+            IValidator<DeleteFriendshipRequest?> validator,
             IPresenter<DeleteFriendshipResponse> presenter)
             : base(handler, validator, presenter)
         {

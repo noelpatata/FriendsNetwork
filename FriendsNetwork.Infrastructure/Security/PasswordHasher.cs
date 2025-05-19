@@ -14,7 +14,7 @@ namespace FriendsNetwork.Infrastructure.Security
             string salt = Convert.ToBase64String(saltBytes);
 
             string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
+                password: password ?? "",
                 salt: saltBytes,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 10000,
@@ -26,10 +26,10 @@ namespace FriendsNetwork.Infrastructure.Security
         public bool VerifyPassword(string? password, string? hash, string? salt)
         {
 
-            byte[] saltBytes = Convert.FromBase64String(salt);
+            byte[] saltBytes = Convert.FromBase64String(salt?? "");
 
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
+                password: password ?? "",
                 salt: saltBytes,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 10000,
