@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("https://192.168.1.141")
+        policy.WithOrigins("https://172.20.0.190")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -72,4 +72,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.Run("https://192.168.1.141:5041");
+app.Run("https://172.20.0.190:5041");

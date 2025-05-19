@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsNetwork.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsNetwork.Infrastructure", "FriendsNetwork.Infrastructure\FriendsNetwork.Infrastructure.csproj", "{8830077A-DBA9-47EB-FA25-0E632096B802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsNetwork.PosgreSqlRepository", "FriendsNetwork.SqlRepository\FriendsNetwork.PosgreSqlRepository.csproj", "{675B73D2-639E-402D-A460-E8D383FFBABE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsNetwork.PosgreSqlRepository", "FriendsNetwork.PostgreSQLRepository\FriendsNetwork.PosgreSqlRepository.csproj", "{675B73D2-639E-402D-A460-E8D383FFBABE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{16945390-C7A5-443E-9626-5CBD1FD7B33F}"
 EndProject

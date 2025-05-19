@@ -1157,8 +1157,8 @@
     },
     "FriendsNetwork.PosgreSqlRepository/1.0.0": {
       "type": "project",
-      "path": "../FriendsNetwork.SqlRepository/FriendsNetwork.PosgreSqlRepository.csproj",
-      "msbuildProject": "../FriendsNetwork.SqlRepository/FriendsNetwork.PosgreSqlRepository.csproj"
+      "path": "../FriendsNetwork.PostgreSQLRepository/FriendsNetwork.PosgreSqlRepository.csproj",
+      "msbuildProject": "../FriendsNetwork.PostgreSQLRepository/FriendsNetwork.PosgreSqlRepository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1173,46 +1173,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\noel\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/home/noel/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Infrastructure\\FriendsNetwork.Infrastructure.csproj",
+      "projectUniqueName": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Infrastructure/FriendsNetwork.Infrastructure.csproj",
       "projectName": "FriendsNetwork.Infrastructure",
-      "projectPath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Infrastructure\\FriendsNetwork.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\noel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Infrastructure\\obj\\",
+      "projectPath": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Infrastructure/FriendsNetwork.Infrastructure.csproj",
+      "packagesPath": "/home/noel/.nuget/packages/",
+      "outputPath": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Infrastructure/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\noel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/noel/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Application\\FriendsNetwork.Application.csproj": {
-              "projectPath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Application\\FriendsNetwork.Application.csproj"
+            "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Application/FriendsNetwork.Application.csproj": {
+              "projectPath": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Application/FriendsNetwork.Application.csproj"
             },
-            "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Domain\\FriendsNetwork.Domain.csproj": {
-              "projectPath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.Domain\\FriendsNetwork.Domain.csproj"
+            "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Domain/FriendsNetwork.Domain.csproj": {
+              "projectPath": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.Domain/FriendsNetwork.Domain.csproj"
             },
-            "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.SqlRepository\\FriendsNetwork.PosgreSqlRepository.csproj": {
-              "projectPath": "C:\\Users\\noel\\git_repos\\FriendsNetwork\\FriendsNetwork.SqlRepository\\FriendsNetwork.PosgreSqlRepository.csproj"
+            "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.PostgreSQLRepository/FriendsNetwork.PosgreSqlRepository.csproj": {
+              "projectPath": "/home/noel/git_repos/FriendsNetwork/FriendsNetwork.PostgreSQLRepository/FriendsNetwork.PosgreSqlRepository.csproj"
             }
           }
         }
@@ -1226,8 +1218,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -1266,7 +1257,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.409/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

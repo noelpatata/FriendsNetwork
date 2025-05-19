@@ -14,6 +14,26 @@ docker pull bitnami/postgresql
 docker run -p 5432:5432 -e POSTGRESQL_PASSWORD=s --name postgresql bitnami/postgresql:latest
 ```
 
+Before running the project, we need to create the database with the following commands:
+
+``` bash
+dotnet ef migrations add InitialCreate --project FriendsNetwork.PostgreSQLRepository --startup-project FriendsNetwork.Api/FriendsNetwork.Api
+dotnet ef database update --project FriendsNetwork.PostgreSQLRepository --startup-project FriendsNetwork.Api\FriendsNetwork.Api
+```
+
+# Run project
+
+With dotnet (sdk 8) CLI, you can run the project with this simple instructions:
+
+``` bash
+cd FriendsNetwork.API\
+dotnet clean
+dotnet restore
+dotnet run
+```
+
+In this case, what im doing is navigating to the API that integrates the business logic from the Clean Architecture, and running its Program.cs.
+
 
 
 

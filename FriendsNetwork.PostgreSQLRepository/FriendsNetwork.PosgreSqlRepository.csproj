@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FriendsNetwork.Domain\FriendsNetwork.Domain.csproj" />
+    <ProjectReference Include="../FriendsNetwork.Domain/FriendsNetwork.Domain.csproj" />
   </ItemGroup>
 
 </Project>

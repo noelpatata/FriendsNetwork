@@ -299,7 +299,7 @@
         },
         "runtime": {
           "FriendsNetwork.Application.dll": {
-            "assemblyVersion": "1.0.0.0",
+            "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -307,7 +307,7 @@
       "FriendsNetwork.Domain/1.0.0": {
         "runtime": {
           "FriendsNetwork.Domain.dll": {
-            "assemblyVersion": "1.0.0.0",
+            "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -319,7 +319,7 @@
         },
         "runtime": {
           "FriendsNetwork.PosgreSqlRepository.dll": {
-            "assemblyVersion": "1.0.0.0",
+            "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
         }

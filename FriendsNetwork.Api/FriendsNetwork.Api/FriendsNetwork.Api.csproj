@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\FriendsNetwork\FriendsNetwork.Infrastructure\FriendsNetwork.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\..\FriendsNetwork\FriendsNetwork.SqlRepository\FriendsNetwork.PosgreSqlRepository.csproj" />
+    <ProjectReference Include="..\..\..\FriendsNetwork\FriendsNetwork.PostgreSQLRepository\FriendsNetwork.PosgreSqlRepository.csproj" />
   </ItemGroup>
 
 </Project>
