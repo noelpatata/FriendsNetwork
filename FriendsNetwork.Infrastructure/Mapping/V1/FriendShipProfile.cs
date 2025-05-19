@@ -4,11 +4,11 @@ using FriendsNetwork.Domain.Entities;
 
 namespace FriendsNetwork.Infrastructure.Mapping.V1
 {
-    internal class FriendShipProfile: Profile
+    public class FriendShipProfile: Profile
     {
         public FriendShipProfile()
         {
-            CreateMap<FriendShip, FriendShipViewModel>().ReverseMap();
+            CreateMap<Friendship, FriendShipViewModel>().ReverseMap();
         }
     }
 }

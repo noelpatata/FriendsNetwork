@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FriendsNetwork.PosgreSqlRepository.Migrations
 {
-    [DbContext(typeof(FriendsDbContext))]
-    partial class FriendsDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FriendsNetworkDbContext))]
+    partial class FriendsNetworkDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,40 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("FriendsNetwork.Domain.Entities.FriendShip", b =>
+            modelBuilder.Entity("FriendsNetwork.Domain.Entities.FriendRequest", b =>
+                {
+                    b.Property<long>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("id"));
+
+                    b.Property<bool>("accepted")
+                        .HasColumnType("boolean");
+
+                    b.Property<long>("receiver_id")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("sender_id")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("sentAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("receiver_id");
+
+                    b.HasIndex("sender_id", "receiver_id")
+                        .IsUnique();
+
+                    b.ToTable("FriendRequests", t =>
+                        {
+                            t.HasCheckConstraint("CK_Request_NoSelfRequest", "sender_id <> receiver_id");
+                        });
+                });
+
+            modelBuilder.Entity("FriendsNetwork.Domain.Entities.Friendship", b =>
                 {
                     b.Property<long>("id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +115,26 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FriendsNetwork.Domain.Entities.FriendShip", b =>
+            modelBuilder.Entity("FriendsNetwork.Domain.Entities.FriendRequest", b =>
+                {
+                    b.HasOne("FriendsNetwork.Domain.Entities.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("receiver_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FriendsNetwork.Domain.Entities.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("sender_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("FriendsNetwork.Domain.Entities.Friendship", b =>
                 {
                     b.HasOne("FriendsNetwork.Domain.Entities.User", "User")
                         .WithMany()

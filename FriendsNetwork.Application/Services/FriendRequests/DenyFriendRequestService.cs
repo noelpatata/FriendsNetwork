@@ -4,17 +4,17 @@ using FriendsNetwork.Domain.Entities;
 
 namespace FriendsNetwork.Application.Services.FriendRequests
 {
-    public class DenyFriendRequestService : IDenyFriendRequestService
+    public class DenyFriendRequestService (IFriendRequestRepository repo) : IDenyFriendRequestService
     {
-        private readonly IFriendRequestRepository? _friendRequestRepository;
-        public Task<FriendRequest> DenyFriendRequestAsync(Guid? friendOnlineId)
+        private readonly IFriendRequestRepository? _friendRequestRepository = repo;
+        public Task<FriendRequest> DenyFriendRequestAsync(long? userId, Guid? friendOnlineId)
         {
             if (_friendRequestRepository == null)
             {
                 throw new ArgumentNullException(nameof(_friendRequestRepository));
             }
 
-            return _friendRequestRepository.DenyFriendRequest(friendOnlineId);
+            return _friendRequestRepository.DenyFriendRequest(userId, friendOnlineId);
         }
     }
 }

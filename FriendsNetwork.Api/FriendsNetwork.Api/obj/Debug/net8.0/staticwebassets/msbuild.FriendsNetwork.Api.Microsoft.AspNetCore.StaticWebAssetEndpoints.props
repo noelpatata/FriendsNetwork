@@ -28,13 +28,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\FriendsNetwork.Api.jhbp1gfc4k.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1136"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 18:08:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1136"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4=\u0022"},{"Name":"Last-Modified","Value":"Mon, 19 May 2025 01:24:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FriendsNetwork.Api/FriendsNetwork.Api.jhbp1gfc4k.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\FriendsNetwork.Api.jhbp1gfc4k.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"jhbp1gfc4k"},{"Name":"integrity","Value":"sha256-Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4="},{"Name":"label","Value":"_content/FriendsNetwork.Api/FriendsNetwork.Api.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1136"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4=\u0022"},{"Name":"Last-Modified","Value":"Sat, 17 May 2025 18:08:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1136"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Z9fWd3AKD/J7Fd8tq3hGhYoIYevscFMG8rBE1\u002BAz6r4=\u0022"},{"Name":"Last-Modified","Value":"Mon, 19 May 2025 01:24:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FriendsNetwork.Api/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

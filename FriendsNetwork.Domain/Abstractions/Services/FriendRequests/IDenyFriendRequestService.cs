@@ -9,6 +9,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.FriendRequests
 {
     public interface IDenyFriendRequestService
     {
-        Task<FriendRequest> DenyFriendRequestAsync(Guid? friendOnlineId);
+        Task<FriendRequest> DenyFriendRequestAsync(long? userId, Guid? friendOnlineId);
     }
 }

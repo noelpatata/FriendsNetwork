@@ -4,6 +4,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.FriendRequests
 {
     public interface IGetPendingFriendRequestsService
     {
-        Task<IEnumerable<FriendRequest>> GetPendingFriendRequestsAsync();
+        Task<IEnumerable<FriendRequest>> GetPendingFriendRequestsAsync(long? userId);
     }
 }

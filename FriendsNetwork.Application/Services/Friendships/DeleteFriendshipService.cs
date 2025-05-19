@@ -3,13 +3,9 @@ using FriendsNetwork.Domain.Abstractions.Services.Friendships;
 
 namespace FriendsNetwork.Application.Services.Friendships
 {
-    public class DeleteFriendshipService : IDeleteFriendshipService
+    public class DeleteFriendshipService(IFriendshipRepository friendShipRepository) : IDeleteFriendshipService
     {
-        private readonly IFriendshipRepository _friendShipRepository;
-        public DeleteFriendshipService(IFriendshipRepository friendShipRepository)
-        {
-            _friendShipRepository = friendShipRepository;
-        }
+        private readonly IFriendshipRepository _friendShipRepository = friendShipRepository;
 
         public Task<bool> DeleteFriendShipServiceAsync(long? userId, Guid? friendOnlineId)
         {

@@ -313,10 +313,10 @@ C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.FriendsNetwork.Api.props
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.FriendsNetwork.Api.props
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\FriendsN.D7427155.Up2Date
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\FriendsNetwork.Api.dll
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\refint\FriendsNetwork.Api.dll
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\FriendsNetwork.Api.pdb
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\FriendsNetwork.Api.genruntimeconfig.cache
 C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\ref\FriendsNetwork.Api.dll
+C:\Users\noel\git_repos\FriendsNetwork\FriendsNetwork.Api\FriendsNetwork.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

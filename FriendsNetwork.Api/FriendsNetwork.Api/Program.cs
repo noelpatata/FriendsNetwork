@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
 });
 
 // PostgreSQL DbContext
-builder.Services.AddDbContext<FriendsDbContext>(options =>
+builder.Services.AddDbContext<FriendsNetworkDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 // Register Clean Architecture services

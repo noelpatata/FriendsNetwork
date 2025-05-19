@@ -8,36 +8,14 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Application.UseCases.V1.Users
 {
-    public class GetUsersUseCase(
-    IHandler<GetUsersRequest, GetUsersResponse> handler,
-    IValidator<GetUsersRequest> validator,
-    IPresenter<GetUsersResponse> presenter)
-    : IUseCase<GetUsersRequest, AppResponse<GetUsersResponse>>
+    public class GetUsersUseCase : GenericUseCase<GetUsersRequest, GetUsersResponse>
     {
-        private readonly IHandler<GetUsersRequest, GetUsersResponse> _handler = handler;
-        private readonly IValidator<GetUsersRequest> _validator = validator;
-        private readonly IPresenter<GetUsersResponse> _presenter = presenter;
-
-        public async Task<AppResponse<GetUsersResponse>> ExecuteAsync(GetUsersRequest request)
+        public GetUsersUseCase(
+            IHandler<GetUsersRequest, GetUsersResponse?> handler,
+            IValidator<GetUsersRequest> validator,
+            IPresenter<GetUsersResponse> presenter)
+            : base(handler, validator, presenter)
         {
-            try
-            {
-                var validationResult = _validator.Validate(request);
-                if (!validationResult.IsValid) throw new Exception(validationResult.ToString());
-
-                var result = await _handler.HandleAsync(request);
-                return await _presenter.PresentAsync(result);
-
-            }
-            catch (Exception ex)
-            {
-                return new AppResponse<GetUsersResponse>
-                {
-                    success = false,
-                    message = ex.Message,
-                    content = null
-                };
-            }
         }
     }
 }

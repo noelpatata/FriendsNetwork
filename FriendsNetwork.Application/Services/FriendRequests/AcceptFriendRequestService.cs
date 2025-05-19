@@ -9,17 +9,17 @@ using FriendsNetwork.Domain.Entities;
 
 namespace FriendsNetwork.Application.Services.FriendRequests
 {
-    public class AcceptFriendRequestService : IAcceptFriendRequestService
+    public class AcceptFriendRequestService (IFriendRequestRepository repo) : IAcceptFriendRequestService
     {
-        private readonly IFriendRequestRepository? _friendRequestRepository;
-        public Task<FriendRequest> AcceptFriendRequestAsync(Guid? friendOnlineId)
+        private readonly IFriendRequestRepository? _friendRequestRepository = repo;
+        public Task<FriendRequest> AcceptFriendRequestAsync(long? userId, Guid? friendOnlineId)
         {
             if (_friendRequestRepository == null)
             {
                 throw new ArgumentNullException(nameof(_friendRequestRepository));
             }
 
-            return _friendRequestRepository.AcceptFriendRequest(friendOnlineId);
+            return _friendRequestRepository.AcceptFriendRequest(userId, friendOnlineId);
         }
     }
 }

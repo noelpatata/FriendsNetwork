@@ -9,9 +9,9 @@ namespace FriendsNetwork.Domain.Abstractions.Repositories
 {
     public interface IFriendRequestRepository
     {
-        Task<FriendRequest> SendFriendRequest(Guid? friendOnlineId);
-        Task<FriendRequest> AcceptFriendRequest(Guid? friendOnlineId);
-        Task<FriendRequest> DenyFriendRequest(Guid? friendOnlineId);
-        Task<IEnumerable<FriendRequest>> GetPendingFriendRequests();
+        Task<FriendRequest> SendFriendRequest(long? userId, Guid? friendOnlineId);
+        Task<FriendRequest> AcceptFriendRequest(long? userId, Guid? friendOnlineId);
+        Task<FriendRequest> DenyFriendRequest(long? userId, Guid? friendOnlineId);
+        Task<IEnumerable<FriendRequest>> GetPendingFriendRequests(long? userId);
     }
 }

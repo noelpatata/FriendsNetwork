@@ -8,6 +8,7 @@ namespace FriendsNetwork.Application.Communication.V1.Requests.FriendRequests
 {
     public class AcceptFriendRequestRequest
     {
+        public long? userId { get; set; }
         public Guid FriendOnlineId { get; set; }
     }
 }

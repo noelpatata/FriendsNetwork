@@ -5,16 +5,12 @@ using FriendsNetwork.Domain.Entities;
 
 namespace FriendsNetwork.Application.Services.Users
 {
-    public class CreateUserService : ICreateUserService
+    public class CreateUserService(
+        IUserRepository userRepository,
+        IPasswordHasher passwordHasher): ICreateUserService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IPasswordHasher _passwordHasher;
-
-        public CreateUserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
-        {
-            _userRepository = userRepository;
-            _passwordHasher = passwordHasher;
-        }
+        private readonly IUserRepository _userRepository = userRepository;
+        private readonly IPasswordHasher _passwordHasher = passwordHasher;
 
         public Task<User?> CreateUserServiceAsync(string? username, string? password)
         {

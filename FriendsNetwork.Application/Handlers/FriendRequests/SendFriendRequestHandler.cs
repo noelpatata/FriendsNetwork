@@ -13,7 +13,7 @@ namespace FriendsNetwork.Application.Handlers.FriendRequests
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         public async Task<SendFriendRequestResponse> HandleAsync(SendFriendRequestRequest request)
         {
-            var acceptedFriendRequest = await _sendFriendRequestService.SendFriendRequestAsync(request.FriendOnlineId);
+            var acceptedFriendRequest = await _sendFriendRequestService.SendFriendRequestAsync(request.userId, request.FriendOnlineId);
             var mappedacceptedFriendRequest = _mapper.Map<FriendRequestViewModel?>(acceptedFriendRequest);
             var mappedAccepted = new SendFriendRequestResponse
             {

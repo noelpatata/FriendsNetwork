@@ -7,13 +7,15 @@ using FriendsNetwork.Domain.Abstractions.Services.FriendRequests;
 
 namespace FriendsNetwork.Application.Handlers.FriendRequests
 {
-    public class AcceptFriendRequestHandler(IAcceptFriendRequestService acceptFriendRequestService, IMapper mapper) : IHandler<AcceptFriendRequestRequest, AcceptFriendRequestResponse>
+    public class AcceptFriendRequestHandler(
+        IAcceptFriendRequestService acceptFriendRequestService,
+        IMapper mapper) : IHandler<AcceptFriendRequestRequest, AcceptFriendRequestResponse>
     {
         private readonly IAcceptFriendRequestService _acceptFriendRequestService = acceptFriendRequestService ?? throw new ArgumentNullException(nameof(acceptFriendRequestService));
         private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         public async Task<AcceptFriendRequestResponse> HandleAsync(AcceptFriendRequestRequest request)
         {
-            var acceptedFriendRequest = await _acceptFriendRequestService.AcceptFriendRequestAsync(request.FriendOnlineId);
+            var acceptedFriendRequest = await _acceptFriendRequestService.AcceptFriendRequestAsync(request.userId, request.FriendOnlineId);
             var mappedacceptedFriendRequest = _mapper.Map<FriendRequestViewModel?>(acceptedFriendRequest);
             var mappedAccepted = new AcceptFriendRequestResponse
             {

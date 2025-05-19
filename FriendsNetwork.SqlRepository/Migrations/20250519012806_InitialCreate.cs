@@ -29,6 +29,35 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FriendRequests",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    sender_id = table.Column<long>(type: "bigint", nullable: false),
+                    receiver_id = table.Column<long>(type: "bigint", nullable: false),
+                    accepted = table.Column<bool>(type: "boolean", nullable: false),
+                    sentAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FriendRequests", x => x.id);
+                    table.CheckConstraint("CK_Request_NoSelfRequest", "sender_id <> receiver_id");
+                    table.ForeignKey(
+                        name: "FK_FriendRequests_Users_receiver_id",
+                        column: x => x.receiver_id,
+                        principalTable: "Users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FriendRequests_Users_sender_id",
+                        column: x => x.sender_id,
+                        principalTable: "Users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Friendships",
                 columns: table => new
                 {
@@ -58,6 +87,17 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_FriendRequests_receiver_id",
+                table: "FriendRequests",
+                column: "receiver_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FriendRequests_sender_id_receiver_id",
+                table: "FriendRequests",
+                columns: new[] { "sender_id", "receiver_id" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Friendships_friend_id",
                 table: "Friendships",
                 column: "friend_id");
@@ -77,6 +117,9 @@ namespace FriendsNetwork.PosgreSqlRepository.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "FriendRequests");
+
             migrationBuilder.DropTable(
                 name: "Friendships");
 

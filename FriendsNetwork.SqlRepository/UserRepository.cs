@@ -5,20 +5,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FriendsNetwork.PosgreSqlRepository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository(FriendsNetworkDbContext context) : IUserRepository
     {
-        private readonly FriendsDbContext _context;
-
-        public UserRepository(FriendsDbContext context)
-        {
-            _context = context;
-        }
+        private readonly FriendsNetworkDbContext _context = context;
 
         public async Task<User?> Add(User? user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            return user;
+            try
+            {
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return user;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Task<bool> Delete(int? UserId)
@@ -28,7 +30,14 @@ namespace FriendsNetwork.PosgreSqlRepository
 
         public async Task<IEnumerable<User?>?> GetAll()
         {
-            return await _context.Users.ToListAsync();
+            try
+            {
+                return await _context.Users.ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Task<User?> GetById(int? UserId)
@@ -38,7 +47,14 @@ namespace FriendsNetwork.PosgreSqlRepository
 
         public async Task<User?> GetByUsername(string? username)
         {
-            return await _context.Users.Where(x => x.username.Equals(username)).FirstOrDefaultAsync();
+            try
+            {
+                return await _context.Users.Where(x => x.username.Equals(username)).FirstOrDefaultAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Task<User?> Update(User? user)

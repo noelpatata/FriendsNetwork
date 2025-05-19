@@ -5,7 +5,7 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Friendships
 {
     public interface IGetFriendShipsService
     {
-        Task<IEnumerable<FriendShip?>?> GetFriendShipsServiceAsync(long? userId);
+        Task<IEnumerable<Friendship?>?> GetFriendShipsServiceAsync(long? userId);
 
     }
 }

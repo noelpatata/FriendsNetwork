@@ -4,13 +4,9 @@ using FriendsNetwork.Domain.Entities;
 
 namespace FriendsNetwork.Application.Services.Users
 {
-    public class GetByUsernameService : IGetByUsernameService
+    public class GetByUsernameService(IUserRepository userRepository) : IGetByUsernameService
     {
-        private readonly IUserRepository _userRepository;
-        public GetByUsernameService(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        private readonly IUserRepository _userRepository = userRepository;
 
         Task<User?> IGetByUsernameService.GetByUsernameServiceAsync(string? username)
         {

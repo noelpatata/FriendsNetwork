@@ -14,8 +14,4 @@
     <ProjectReference Include="..\FriendsNetwork.Domain\FriendsNetwork.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

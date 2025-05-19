@@ -6,7 +6,7 @@ namespace FriendsNetwork.Infrastructure.Presenters.V1.Friendships
 {
     public class DeleteFriendshipPresenter: IPresenter<DeleteFriendshipResponse>
     {
-        public async Task<AppResponse<DeleteFriendshipResponse?>?> PresentAsync(DeleteFriendshipResponse? response)
+        public async Task<AppResponse<DeleteFriendshipResponse?>> PresentAsync(DeleteFriendshipResponse? response)
         {
             return new AppResponse<DeleteFriendshipResponse?>
             {

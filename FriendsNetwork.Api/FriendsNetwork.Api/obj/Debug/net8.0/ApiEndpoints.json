@@ -1,5 +1,89 @@
 [
   {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
+    "Method": "GetAll",
+    "RelativePath": "api/Friendship",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendshipController",
+    "Method": "DeleteFriend",
+    "RelativePath": "api/Friendship",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FriendsNetwork.Application.Communication.V1.Requests.Friendships.DeleteFriendshipRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "Method": "GetPendingFriendRequests",
+    "RelativePath": "api/FriendsRequest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "Method": "AcceptFriendRequest",
+    "RelativePath": "api/FriendsRequest/accept",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "r",
+        "Type": "FriendsNetwork.Application.Communication.V1.Requests.FriendRequests.AcceptFriendRequestRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "Method": "DenyFriendRequest",
+    "RelativePath": "api/FriendsRequest/deny",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "r",
+        "Type": "FriendsNetwork.Application.Communication.V1.Requests.FriendRequests.DenyFriendRequestRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FriendsNetwork.Api.Controllers.FriendsRequestController",
+    "Method": "SendFriendRequest",
+    "RelativePath": "api/FriendsRequest/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "r",
+        "Type": "FriendsNetwork.Application.Communication.V1.Requests.FriendRequests.SendFriendRequestRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FriendsNetwork_Api.Controllers.LoginController",
     "Method": "LoginAsync",
     "RelativePath": "api/Login",
