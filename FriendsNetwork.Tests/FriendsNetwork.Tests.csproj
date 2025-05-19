@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FriendsNetwork.Application\FriendsNetwork.Application.csproj" />
     <ProjectReference Include="..\FriendsNetwork.Domain\FriendsNetwork.Domain.csproj" />
+    <ProjectReference Include="..\FriendsNetwork.Infrastructure\FriendsNetwork.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
