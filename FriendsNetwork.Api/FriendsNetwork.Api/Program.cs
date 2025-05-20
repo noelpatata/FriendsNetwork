@@ -22,6 +22,7 @@ builder.WebHost.UseUrls(apiHost);
 
 // CORS
 var allowedOrigin = Environment.GetEnvironmentVariable("REACT_APP_ORIGIN") ?? "http://localhost:3000";
+Console.WriteLine($"Allowed origin: {allowedOrigin}");
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
@@ -79,16 +80,10 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
 var app = builder.Build();
-
-app.UseCors("AllowReactApp");
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
-
 app.UseHttpsRedirection();
+
+app.UseRouting();
+app.UseCors("AllowReactApp");
 app.UseAuthentication();
 app.UseAuthorization();
 

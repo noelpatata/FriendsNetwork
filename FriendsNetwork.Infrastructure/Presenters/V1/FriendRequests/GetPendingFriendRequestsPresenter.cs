@@ -4,16 +4,17 @@ using FriendsNetwork.Domain.Responses;
 
 namespace FriendsNetwork.Infrastructure.Presenters.V1.FriendRequests
 {
-    public class SendFriendRequestPresenter : IPresenter<SendFriendRequestResponse?>
+    public class GetPendingFriendRequestsPresenter : IPresenter<GetPendingFriendRequestsResponse?>
     {
-        public Task<AppResponse<SendFriendRequestResponse?>> PresentAsync(SendFriendRequestResponse? response)
+        public Task<AppResponse<GetPendingFriendRequestsResponse?>> PresentAsync(GetPendingFriendRequestsResponse? response)
         {
-            var result = new AppResponse<SendFriendRequestResponse?>
+            var result= new AppResponse<GetPendingFriendRequestsResponse?>
             {
                 success = true,
                 content = response,
-                message = "Friend requests sended successfully."
+                message = "Friend request sent successfully."
             };
+
             return Task.FromResult(result);
         }
     }
