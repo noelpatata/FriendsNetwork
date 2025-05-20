@@ -94,7 +94,7 @@ namespace FriendsNetwork.PosgreSqlRepository
             {
                 throw;
             }
-            
+
         }
 
 
@@ -116,7 +116,7 @@ namespace FriendsNetwork.PosgreSqlRepository
 
                 var existingRequest = await _dbContext.FriendRequests
                     .FirstOrDefaultAsync(x => x.sender_id == userId && x.receiver_id == targetUser.id);
-                    
+
 
                 var newFriendRequest = new FriendRequest
                 {
@@ -131,11 +131,35 @@ namespace FriendsNetwork.PosgreSqlRepository
 
                 return newFriendRequest;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
-            
+
         }
+        public async Task<bool> DeleteFriendRequests(long userA, long userB)
+        {
+            try
+            {
+                var requests = await _context.FriendRequests
+                .Where(fr =>
+                    (fr.sender_id == userA && fr.receiver_id == userB) ||
+                    (fr.sender_id == userB && fr.receiver_id == userA))
+                .ToListAsync();
+
+                _context.FriendRequests.RemoveRange(requests);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }   
     }
+    
+
+
+        
 }

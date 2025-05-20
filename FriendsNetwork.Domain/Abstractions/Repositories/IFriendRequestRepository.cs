@@ -13,5 +13,6 @@ namespace FriendsNetwork.Domain.Abstractions.Repositories
         Task<FriendRequest> AcceptFriendRequest(long? userId, Guid? friendOnlineId);
         Task<FriendRequest> DenyFriendRequest(long? userId, Guid? friendOnlineId);
         Task<IEnumerable<FriendRequest>> GetPendingFriendRequests(long? userId);
+        Task<bool> DeleteFriendRequests(long user1Id, long user2Id);
     }
 }

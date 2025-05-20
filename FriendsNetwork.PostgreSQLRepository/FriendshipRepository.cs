@@ -10,53 +10,27 @@ namespace FriendsNetwork.PosgreSqlRepository
     public class FriendshipRepository (FriendsNetworkDbContext context): IFriendshipRepository
     {
         private readonly FriendsNetworkDbContext _context = context;
-        public async Task<bool> Delete(long? userId, Guid? friendOnlineId)
+        public async Task<FriendShip> GetFriendShip(long user1Id, long user2Id)
         {
-            try
-            {
-                var friendUser = await _context.Users.Where(u => u.online_id == friendOnlineId).FirstOrDefaultAsync();
-
-                if (friendUser == null)
-                    throw new UserNotFoundException();
-
-                var friendlog = await _context.Friendships.Where(x => x.user_id == userId && x.friend_id == friendUser.id)
+            return await _context.Friendships.Where(x => x.user_id == user1Id && x.friend_id == user2Id)
                     .Include(x => x.Friend)
                     .FirstOrDefaultAsync();
-
-                var friendlog1 = await _context.Friendships.Where(x => x.user_id == friendUser.id && x.friend_id == userId)
-                    .FirstOrDefaultAsync();
-
-                _context.RemoveRange([friendlog, friendlog1]);
-
-                await _context.SaveChangesAsync();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
-
-        public async Task<bool> DeleteFriendShip(long userA, long userB)
+        public async Task<bool> Delete(Friendship friend1, Friendship friend2)
         {
             try
             {
-                var requests = await _context.FriendRequests
-                .Where(fr =>
-                    (fr.sender_id == userA && fr.receiver_id == userB) ||
-                    (fr.sender_id == userB && fr.receiver_id == userA))
-                .ToListAsync();
 
-                _context.FriendRequests.RemoveRange(requests);
+                _context.RemoveRange([friend1, friend2]);
+
                 await _context.SaveChangesAsync();
+
                 return true;
             }
             catch (Exception)
             {
                 throw;
             }
-
         }
 
         public async Task<IEnumerable<Friendship?>?> GetAll(long? userId)
