@@ -26,15 +26,7 @@ namespace FriendsNetwork.PosgreSqlRepository
                 var friendlog1 = await _context.Friendships.Where(x => x.user_id == friendUser.id && x.friend_id == userId)
                     .FirstOrDefaultAsync();
 
-                if (friendlog == null)
-                    throw new FriendNotFoundException();
-
-                if (friendlog1 == null)
-                    throw new FriendNotFoundException();
-
                 _context.RemoveRange([friendlog, friendlog1]);
-
-                await RemoveExistingRequestsBetween(userId, friendUser.id);
 
                 await _context.SaveChangesAsync();
 
@@ -46,7 +38,7 @@ namespace FriendsNetwork.PosgreSqlRepository
             }
         }
 
-        private async Task RemoveExistingRequestsBetween(long? userA, long? userB)
+        public async Task<bool> DeleteFriendShip(long userA, long userB)
         {
             try
             {
@@ -57,6 +49,8 @@ namespace FriendsNetwork.PosgreSqlRepository
                 .ToListAsync();
 
                 _context.FriendRequests.RemoveRange(requests);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception)
             {
