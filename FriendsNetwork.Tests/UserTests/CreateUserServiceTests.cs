@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿﻿using AutoMapper;
 
 using FriendsNetwork.Application.Communication.V1.Requests.Users;
 using FriendsNetwork.Application.Communication.V1.Responses.Users;
@@ -21,6 +21,7 @@ namespace FriendsNetwork.Tests.UserTests
     public class CreateUserUseCaseTests
     {
         private CreateUserUseCase _useCase;
+        private PasswordHasher _passwordHasher;
         private Mock<IUserRepository> _userRepositoryMock;
         private List<User> _inMemoryUsers;
 
@@ -61,8 +62,8 @@ namespace FriendsNetwork.Tests.UserTests
             });
 
             var mapper = mapperConfig.CreateMapper();
-            var passwordHasher = new PasswordHasher(); // Or a mock if you prefer
-            var service = new CreateUserService(_userRepositoryMock.Object, passwordHasher);
+            _passwordHasher = new PasswordHasher(); // Or a mock if you prefer
+            var service = new CreateUserService(_userRepositoryMock.Object, _passwordHasher);
             var handler = new CreateUserHandler(service, mapper);
             var validator = new CreateUserValidator();
             var presenter = new CreateUserPresenter();
@@ -118,14 +119,6 @@ namespace FriendsNetwork.Tests.UserTests
                 username = "validUsername",
                 password = "validPassword123"
             };
-            var response = new CreateUserResponse
-            {
-                userViewModel = new UserViewModel
-                {
-                    Username = request.username,
-                    Online_Id = Guid.NewGuid(),
-                },
-            };
 
             // Act
             var result = await _useCase.ExecuteAsync(request);
@@ -133,6 +126,34 @@ namespace FriendsNetwork.Tests.UserTests
             // Assert
             Assert.IsTrue(result.success);
             Assert.That(result.message, Is.EquivalentTo("User created successfully."));
+        }
+
+        [Test]
+        public async Task CreateUserUseCase_ValidRequest_StoresHashedPassword()
+        {
+            // Arrange
+            var originalPassword = "validPassword123";
+            var hashedPassword = _passwordHasher.HashPassword(originalPassword);
+
+            var request = new CreateUserRequest
+            {
+                username = "testUser",
+                password = originalPassword
+            };
+
+            // Act
+            var result = await _useCase.ExecuteAsync(request);
+
+            // Assert 
+            var storedUser = _inMemoryUsers.FirstOrDefault(u => u.username == request.username);
+            Assert.IsNotNull(storedUser, "User was not stored in repository.");
+
+            // Verify the password is hashed (not plain text)
+            Assert.AreNotEqual(originalPassword, storedUser.hashed_password, "Password was not hashed.");
+
+            // Verify the hashed password matches the original password using PasswordHasher
+            var isPasswordValid = _passwordHasher.VerifyPassword(originalPassword, storedUser.hashed_password, storedUser.salt);
+            Assert.IsTrue(isPasswordValid, "Stored hashed password does not match original password.");
         }
     }
 }
