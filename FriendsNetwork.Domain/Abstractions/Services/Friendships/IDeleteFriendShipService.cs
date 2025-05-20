@@ -8,7 +8,7 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Friendships
 {
     public interface IDeleteFriendshipService
     {
-        Task<bool> DeleteFriendShipServiceAsync(long? userId, Guid? friendOnlineId);
+        Task<bool> DeleteFriendShipServiceAsync(long userId, Guid friendOnlineId);
 
     }
 }

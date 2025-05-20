@@ -8,7 +8,7 @@ namespace FriendsNetwork.Application.Communication.V1.Requests.Friendships
 {
     public class DeleteFriendshipRequest
     {
-        public long? userId { get; set; }
-        public Guid? friendOnlineId { get; set; }
+        public long userId { get; set; }
+        public Guid friendOnlineId { get; set; }
     }
 }

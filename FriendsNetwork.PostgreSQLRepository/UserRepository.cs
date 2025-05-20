@@ -9,7 +9,7 @@ namespace FriendsNetwork.PosgreSqlRepository
     {
         private readonly FriendsNetworkDbContext _context = context;
 
-        public async Task<User?> Add(User? user)
+        public async Task<User> Add(User user)
         {
             try
             {
@@ -26,12 +26,7 @@ namespace FriendsNetwork.PosgreSqlRepository
             }
         }
 
-        public Task<bool> Delete(int? UserId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<User?>?> GetAll()
+        public async Task<IEnumerable<User?>> GetAll()
         {
             try
             {
@@ -43,12 +38,19 @@ namespace FriendsNetwork.PosgreSqlRepository
             }
         }
 
-        public Task<User?> GetById(int? UserId)
+        public async Task<User?> GetByOnlineId(Guid onlineId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.Users.Where(x=>x.online_id == onlineId).FirstOrDefaultAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public async Task<User?> GetByUsername(string? username)
+        public async Task<User?> GetByUsername(string username)
         {
             try
             {
@@ -58,11 +60,6 @@ namespace FriendsNetwork.PosgreSqlRepository
             {
                 throw;
             }
-        }
-
-        public Task<User?> Update(User? user)
-        {
-            throw new NotImplementedException();
         }
     }
 }

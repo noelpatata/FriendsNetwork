@@ -12,7 +12,7 @@ namespace FriendsNetwork.Application.Handlers.Friendships
         
         public async Task<DeleteFriendshipResponse?> HandleAsync(DeleteFriendshipRequest? request)
         {
-            var deleted = await _deleteFriendService.DeleteFriendShipServiceAsync(request!.userId, request.friendOnlineId);
+            var deleted = await _deleteFriendService.DeleteFriendShipServiceAsync(request!.userId, request!.friendOnlineId);
 
             var mappedDeleted = new DeleteFriendshipResponse
             {

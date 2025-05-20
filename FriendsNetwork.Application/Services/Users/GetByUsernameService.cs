@@ -8,7 +8,7 @@ namespace FriendsNetwork.Application.Services.Users
     {
         private readonly IUserRepository _userRepository = userRepository;
 
-        Task<User?> IGetByUsernameService.GetByUsernameServiceAsync(string? username)
+        Task<User?> IGetByUsernameService.GetByUsernameServiceAsync(string username)
         {
             return _userRepository.GetByUsername(username);
         }

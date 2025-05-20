@@ -12,7 +12,7 @@ namespace FriendsNetwork.Application.Services.FriendRequests
     public class GetPendingFriendRequestsService (IFriendRequestRepository repo) : IGetPendingFriendRequestsService
     {
         private readonly IFriendRequestRepository? _friendRequestRepository = repo;
-        public Task<IEnumerable<FriendRequest>> GetPendingFriendRequestsAsync(long? userId)
+        public Task<IEnumerable<FriendRequest>> GetPendingFriendRequestsAsync(long userId)
         {
             if (_friendRequestRepository == null)
             {

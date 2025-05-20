@@ -10,18 +10,16 @@ namespace FriendsNetwork.PosgreSqlRepository
     public class FriendshipRepository (FriendsNetworkDbContext context): IFriendshipRepository
     {
         private readonly FriendsNetworkDbContext _context = context;
-        public async Task<FriendShip> GetFriendShip(long user1Id, long user2Id)
+        public async Task<IEnumerable<Friendship>> GetFriendShip(long user1Id, long user2Id)
         {
-            return await _context.Friendships.Where(x => x.user_id == user1Id && x.friend_id == user2Id)
-                    .Include(x => x.Friend)
-                    .FirstOrDefaultAsync();
+            return await _context.Friendships.Where(x => (x.user_id == user1Id && x.friend_id == user2Id) || (x.user_id == user2Id && x.friend_id == user1Id)).ToListAsync();
         }
-        public async Task<bool> Delete(Friendship friend1, Friendship friend2)
+        public async Task<bool> Delete(IEnumerable<Friendship> friendship)
         {
             try
             {
 
-                _context.RemoveRange([friend1, friend2]);
+                _context.RemoveRange(friendship);
 
                 await _context.SaveChangesAsync();
 
@@ -33,7 +31,7 @@ namespace FriendsNetwork.PosgreSqlRepository
             }
         }
 
-        public async Task<IEnumerable<Friendship?>?> GetAll(long? userId)
+        public async Task<IEnumerable<Friendship?>?> GetAll(long userId)
         {
             try
             {
@@ -45,6 +43,39 @@ namespace FriendsNetwork.PosgreSqlRepository
             {
                 throw;
             }
+        }
+
+        public async Task<bool> AddFriendship(long userId, long frienduserId)
+        {
+            try
+            {
+                //add friend relationship (both ways)
+                var newFriend1 = new Friendship
+                {
+                    user_id = userId,
+                    friend_id = frienduserId
+                };
+
+                var newFriend2 = new Friendship
+                {
+                    user_id = frienduserId,
+                    friend_id = userId
+                };
+
+                await _context.Friendships.AddRangeAsync([newFriend1, newFriend2]);
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> AlreadyFriends(long user1, long user2)
+        {
+            var alreadyFriends = await _context.Friendships.Where(x => (x.user_id == user1 && x.friend_id == user2) || (x.user_id == user2 && x.friend_id == user1)).FirstOrDefaultAsync();
+            return alreadyFriends != null;
         }
     }
 }

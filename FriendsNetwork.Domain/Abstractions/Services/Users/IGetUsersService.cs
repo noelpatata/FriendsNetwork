@@ -4,6 +4,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.Users
 {
     public interface IGetUsersService
     {
-        Task<IEnumerable<User?>?> GetUsersServiceAsync();
+        Task<IEnumerable<User?>> GetUsersServiceAsync();
     }
 }

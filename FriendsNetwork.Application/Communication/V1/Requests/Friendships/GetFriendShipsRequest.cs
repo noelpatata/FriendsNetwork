@@ -2,6 +2,6 @@
 {
     public class GetFriendshipsRequest
     {
-        public long? userId { get; set; }
+        public long userId { get; set; }
     }
 }

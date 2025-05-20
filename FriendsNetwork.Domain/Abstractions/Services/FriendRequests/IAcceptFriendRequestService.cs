@@ -9,6 +9,6 @@ namespace FriendsNetwork.Domain.Abstractions.Services.FriendRequests
 {
     public interface IAcceptFriendRequestService
     {
-        Task<FriendRequest> AcceptFriendRequestAsync(long? userId, Guid? friendOnlineId);
+        Task<FriendRequest> AcceptFriendRequestAsync(long userId, Guid friendOnlineId);
     }
 }

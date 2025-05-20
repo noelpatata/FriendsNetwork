@@ -1,7 +1,4 @@
-﻿using FriendsNetwork.Application.Services.FriendRequests.Exceptions;
-using FriendsNetwork.Application.Services.Users.Exceptions;
-using FriendsNetwork.Domain.Abstractions.Repositories;
-using FriendsNetwork.Domain.Abstractions.Services.FriendRequests.Exceptions;
+﻿using FriendsNetwork.Domain.Abstractions.Repositories;
 using FriendsNetwork.Domain.Entities;
 using FriendsNetwork.SqlRepository.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -11,68 +8,17 @@ namespace FriendsNetwork.PosgreSqlRepository
     public class FriendRequestRepository(FriendsNetworkDbContext context) : IFriendRequestRepository
     {
         private readonly FriendsNetworkDbContext _dbContext = context;
-        public async Task<FriendRequest> AcceptFriendRequest(long? userId, Guid? friendOnlineId)
+        public async Task<bool> AcceptFriendRequest(FriendRequest fr)
         {
             try
             {
-                var senderUser = await _dbContext.Users.Where(u => u.online_id == friendOnlineId).FirstOrDefaultAsync();
-                if (senderUser == null)
-                    throw new UserNotFoundException();
 
-                if (userId == senderUser.id)
-                    throw new CannotAcceptYourSelfException();
+                //check as accepted
+                fr.accepted = true;
 
-                var friendRequest = await _dbContext.FriendRequests.Where(x => x.receiver_id == userId && x.sender_id == senderUser.id).OrderByDescending(x => x.id).FirstOrDefaultAsync();
-
-                if (friendRequest == null)
-                    throw new FriendRequestsNotFoundException();
-
-                //accept friend request
-                friendRequest.accepted = true;
-
-                //add friend relationship (both ways)
-                var newFriend1 = new Friendship
-                {
-                    user_id = userId ?? 0,
-                    friend_id = senderUser.id
-                };
-
-                var newFriend2 = new Friendship
-                {
-                    user_id = senderUser.id,
-                    friend_id = userId ?? 0
-                };
-                await _dbContext.Friendships.AddRangeAsync([newFriend1, newFriend2]);
-
-                await _dbContext.SaveChangesAsync();//apply changes
-
-                return friendRequest;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public async Task<FriendRequest> DenyFriendRequest(long? userId, Guid? friendOnlineId)
-        {
-            try
-            {
-                var senderUserId = await _dbContext.Users.Where(u => u.online_id == friendOnlineId).FirstOrDefaultAsync();
-                if (senderUserId == null)
-                    throw new UserNotFoundException();
-
-                var friendRequest = await _dbContext.FriendRequests.Where(x => x.receiver_id == userId && x.sender_id == senderUserId.id)
-                    .Include(x => x.Sender)
-                    .Include(x => x.Receiver)
-                    .FirstOrDefaultAsync();
-                if (friendRequest == null)
-                    throw new FriendRequestsNotFoundException();
-
-                _dbContext.FriendRequests.RemoveRange(friendRequest);
                 await _dbContext.SaveChangesAsync();
 
-                return friendRequest;
+                return true;
             }
             catch (Exception)
             {
@@ -80,7 +26,21 @@ namespace FriendsNetwork.PosgreSqlRepository
             }
         }
 
-        public async Task<IEnumerable<FriendRequest>> GetPendingFriendRequests(long? userId)
+        public async Task<bool> DenyFriendRequest(FriendRequest fr)
+        {
+            try
+            {
+                _dbContext.FriendRequests.Remove(fr);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<FriendRequest>> GetPendingFriendRequests(long userId)
         {
             try
             {
@@ -98,31 +58,16 @@ namespace FriendsNetwork.PosgreSqlRepository
         }
 
 
-        public async Task<FriendRequest> SendFriendRequest(long? userId, Guid? friendOnlineId)
+        public async Task<FriendRequest> SendFriendRequest(long userId, long friendUserId, User friendUser)
         {
             try
             {
-                if (userId == null || userId <= 0)
-                    throw new ArgumentNullException(nameof(userId));
-
-                var targetUser = await _dbContext.Users.Where(u => u.online_id == friendOnlineId)
-                    .FirstOrDefaultAsync();
-
-                if (targetUser == null)
-                    throw new UserNotFoundException();
-
-                if (userId == targetUser.id)
-                    throw new CannotAddYourSelfException();
-
-                var existingRequest = await _dbContext.FriendRequests
-                    .FirstOrDefaultAsync(x => x.sender_id == userId && x.receiver_id == targetUser.id);
-
 
                 var newFriendRequest = new FriendRequest
                 {
-                    sender_id = userId ?? 0,
-                    receiver_id = targetUser.id,
-                    Receiver = targetUser
+                    sender_id = userId,
+                    receiver_id = friendUserId,
+                    Receiver = friendUser
 
                 };
 
@@ -141,14 +86,14 @@ namespace FriendsNetwork.PosgreSqlRepository
         {
             try
             {
-                var requests = await _context.FriendRequests
+                var requests = await _dbContext.FriendRequests
                 .Where(fr =>
                     (fr.sender_id == userA && fr.receiver_id == userB) ||
                     (fr.sender_id == userB && fr.receiver_id == userA))
                 .ToListAsync();
 
-                _context.FriendRequests.RemoveRange(requests);
-                await _context.SaveChangesAsync();
+                _dbContext.FriendRequests.RemoveRange(requests);
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -156,7 +101,25 @@ namespace FriendsNetwork.PosgreSqlRepository
                 throw;
             }
 
-        }   
+        }
+
+        public async Task<FriendRequest?> GetReceivedFriendRequestFromUser(long user1Id, long user2Id)
+        {
+            return await _dbContext.FriendRequests
+                .Where(x => x.receiver_id == user1Id && x.sender_id == user2Id)
+                .OrderByDescending(x => x.id)
+                .Include(x=>x.Sender)
+                .FirstOrDefaultAsync();
+
+        }
+
+        public async Task<bool> PreviousFriendRequestsSent(long user1, long user2)
+        {
+            var existingRequest = await _dbContext.FriendRequests
+                   .FirstOrDefaultAsync(x => x.sender_id == user1 && x.receiver_id == user2);
+
+            return existingRequest != null;
+        }
     }
     
 

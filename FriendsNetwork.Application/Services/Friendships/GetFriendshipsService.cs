@@ -8,7 +8,7 @@ namespace FriendsNetwork.Application.Services.Friendships
     {
 
         private readonly IFriendshipRepository _friendShipRepository = friendShipRepository;
-        public Task<IEnumerable<Friendship?>?> GetFriendShipsServiceAsync(long? userId)
+        public Task<IEnumerable<Friendship?>?> GetFriendShipsServiceAsync(long userId)
         {
             return _friendShipRepository.GetAll(userId);
         }
