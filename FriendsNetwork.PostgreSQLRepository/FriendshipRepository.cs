@@ -63,6 +63,7 @@ namespace FriendsNetwork.PosgreSqlRepository
                 };
 
                 await _context.Friendships.AddRangeAsync([newFriend1, newFriend2]);
+                await _context.SaveChangesAsync();
                 return true;
 
             }

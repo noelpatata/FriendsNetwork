@@ -10,7 +10,7 @@ namespace FriendsNetwork.Infrastructure.Validators.V1.FriendRequests
 
             RuleFor(x => x)
                 .NotNull().WithMessage("Request cannot be null.");
-            RuleFor(x => x.FriendOnlineId)
+            RuleFor(x => x.friendOnlineId)
                 .NotEmpty()
                 .WithMessage("Friend's online ID is required.");
         }
