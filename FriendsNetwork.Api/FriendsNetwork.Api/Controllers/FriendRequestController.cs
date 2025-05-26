@@ -2,6 +2,7 @@
 using FriendsNetwork.Application.Communication.V1.Requests.FriendResponse;
 using FriendsNetwork.Domain.Abstractions.UseCases;
 using FriendsNetwork.Domain.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FriendsNetwork.Api.Controllers
@@ -14,12 +15,7 @@ namespace FriendsNetwork.Api.Controllers
             IUseCase<SendFriendRequestRequest, AppResponse<SendFriendRequestResponse>> sendFriendRequest,
             IUseCase<GetPendingFriendRequestsRequest, AppResponse<GetPendingFriendRequestsResponse>> getPendingFriendRequests) : ControllerBase
     {
-        private readonly IUseCase<AcceptFriendRequestRequest, AppResponse<AcceptFriendRequestResponse>> _acceptFriendRequest = acceptFriendRequest;
-        private readonly IUseCase<DenyFriendRequestRequest, AppResponse<DenyFriendRequestResponse>> _denyFriendRequest = denyFriendRequest;
-        private readonly IUseCase<SendFriendRequestRequest, AppResponse<SendFriendRequestResponse>> _sendFriendRequest = sendFriendRequest;
-        private readonly IUseCase<GetPendingFriendRequestsRequest, AppResponse<GetPendingFriendRequestsResponse>> _getPendingFriendRequests = getPendingFriendRequests;
-
-
+        [Authorize]
         [HttpPost("accept")]
         public async Task<IActionResult> AcceptFriendRequest([FromBody] AcceptFriendRequestRequest r)
         {
@@ -32,9 +28,10 @@ namespace FriendsNetwork.Api.Controllers
 
             r.userId = userId;
 
-            return Ok(await _acceptFriendRequest.ExecuteAsync(r));
+            return Ok(await acceptFriendRequest.ExecuteAsync(r));
         }
-
+        
+        [Authorize]
         [HttpPost("deny")]
         public async Task<IActionResult> DenyFriendRequest([FromBody] DenyFriendRequestRequest r)
         {
@@ -47,9 +44,10 @@ namespace FriendsNetwork.Api.Controllers
 
             r.userId = userId;
 
-            return Ok(await _denyFriendRequest.ExecuteAsync(r));
+            return Ok(await denyFriendRequest.ExecuteAsync(r));
         }
 
+        [Authorize]
         [HttpPost("send")]
         public async Task<IActionResult> SendFriendRequest([FromBody] SendFriendRequestRequest r)
         {
@@ -62,9 +60,10 @@ namespace FriendsNetwork.Api.Controllers
 
             r.userId = userId;
 
-            return Ok(await _sendFriendRequest.ExecuteAsync(r));
+            return Ok(await sendFriendRequest.ExecuteAsync(r));
         }
-
+    
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetPendingFriendRequests()
         {
@@ -80,7 +79,7 @@ namespace FriendsNetwork.Api.Controllers
                 userId = userId
             };
 
-            return Ok(await _getPendingFriendRequests.ExecuteAsync(request));
+            return Ok(await getPendingFriendRequests.ExecuteAsync(request));
         }
     }
 }

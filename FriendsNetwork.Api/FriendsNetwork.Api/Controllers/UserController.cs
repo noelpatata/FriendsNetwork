@@ -5,29 +5,21 @@ using FriendsNetwork.Domain.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FriendsNetwork_Api.Controllers
+namespace FriendsNetwork.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController(
+        IUseCase<GetUsersRequest, AppResponse<GetUsersResponse>> getUsersUseCase,
+        IUseCase<CreateUserRequest, AppResponse<CreateUserResponse>> createUserUseCase)
+        : ControllerBase
     {
-        private readonly IUseCase<GetUsersRequest, AppResponse<GetUsersResponse>> _getUsersUseCase;
-        private readonly IUseCase<CreateUserRequest, AppResponse<CreateUserResponse>> _createUserUseCase;
-
-        public UserController(
-            IUseCase<GetUsersRequest, AppResponse<GetUsersResponse>> getUsersUseCase,
-            IUseCase<CreateUserRequest, AppResponse<CreateUserResponse>> createUserUseCase)
-        {
-            _getUsersUseCase = getUsersUseCase;
-            _createUserUseCase = createUserUseCase;
-        }
-
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<AppResponse<GetUsersResponse>>> GetAll()
         {
             var request = new GetUsersRequest();
-            var response = await _getUsersUseCase.ExecuteAsync(request);
+            var response = await getUsersUseCase.ExecuteAsync(request);
             return Ok(response);
         }
 
@@ -37,7 +29,7 @@ namespace FriendsNetwork_Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var response = await _createUserUseCase.ExecuteAsync(request);
+            var response = await createUserUseCase.ExecuteAsync(request);
             if (!response.success)
                 return BadRequest(response);
 

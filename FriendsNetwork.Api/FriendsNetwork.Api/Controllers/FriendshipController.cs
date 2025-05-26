@@ -1,7 +1,5 @@
 ﻿using FriendsNetwork.Application.Communication.V1.Requests.Friendships;
 using FriendsNetwork.Application.Communication.V1.Responses.Friendships;
-using FriendsNetwork.Application.Communication.V1.Responses.Users;
-using FriendsNetwork.Domain.Abstractions.Services.Friendships;
 using FriendsNetwork.Domain.Abstractions.UseCases;
 using FriendsNetwork.Domain.Responses;
 using Microsoft.AspNetCore.Authorization;

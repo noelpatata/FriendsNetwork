@@ -4,26 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using FriendsNetwork.Application.Communication.V1.Requests.Login;
 using FriendsNetwork.Application.Communication.V1.Responses.Login;
 
-namespace FriendsNetwork_Api.Controllers
+namespace FriendsNetwork.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class LoginController : ControllerBase
+    public class LoginController(IUseCase<DoLoginRequest, AppResponse<DoLoginResponse>> doLogin)
+        : ControllerBase
     {
-        private readonly IUseCase<DoLoginRequest, AppResponse<DoLoginResponse>> _doLogin;
-
-        public LoginController(
-            IUseCase<DoLoginRequest, AppResponse<DoLoginResponse>> doLogin)
-        {
-            _doLogin = doLogin;
-        }
-
         [HttpPost]
         public async Task<IActionResult> LoginAsync([FromBody] DoLoginRequest login)
         {
-            var encalsulatedResponse = await _doLogin.ExecuteAsync(login);
+            var encapsulatedResponse = await doLogin.ExecuteAsync(login);
 
-            return Ok(encalsulatedResponse);
+            return Ok(encapsulatedResponse);
         }
     }
 }
