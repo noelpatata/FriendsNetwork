@@ -20,7 +20,7 @@ namespace FriendsNetwork.Application.Handlers.Users
 
             return new GetByUsernameResponse
             {
-                userViewModel = mappedUser
+                viewModel = mappedUser
             };
 
         }

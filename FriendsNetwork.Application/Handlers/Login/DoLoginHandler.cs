@@ -26,7 +26,7 @@ public class DoLoginHandler : IHandler<DoLoginRequest, DoLoginResponse>
 
         return new DoLoginResponse
         {
-            tokenViewModel = mappedToken
+            viewModel = mappedToken
         };
     }
 }

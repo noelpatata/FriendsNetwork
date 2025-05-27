@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using FriendsNetwork.Application.Communication.V1.ViewModels.FriendRequests;
 using FriendsNetwork.Domain.Entities;
 
-namespace FriendsNetwork.Application.Communication.V1.Requests.FriendResponse
+namespace FriendsNetwork.Application.Communication.V1.Responses.FriendRequests
 {
-    public class GetPendingFriendRequestsResponse
+    public class GetPendingFriendRequestsResponse: GenericResponse<IEnumerable<FriendRequestViewModel?>>
     {
-        public IEnumerable<FriendRequestViewModel?>? viewModels { get; set;}
     }
 }

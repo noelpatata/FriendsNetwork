@@ -34,12 +34,20 @@ using FriendsNetwork.Application.UseCases.V1.Friendships;
 using FriendsNetwork.Infrastructure.Validators.V1.Friendships;
 using FriendsNetwork.Domain.Abstractions.Services.FriendRequests;
 using FriendsNetwork.Application.Services.FriendRequests;
-using FriendsNetwork.Application.Communication.V1.Requests.FriendResponse;
 using FriendsNetwork.Infrastructure.Presenters.V1.FriendRequests;
 using FriendsNetwork.Application.Communication.V1.Requests.FriendRequests;
+using FriendsNetwork.Application.Communication.V1.Requests.Notifications;
+using FriendsNetwork.Application.Communication.V1.Responses.FriendRequests;
+using FriendsNetwork.Application.Communication.V1.Responses.Notifications;
 using FriendsNetwork.Application.Handlers.FriendRequests;
+using FriendsNetwork.Application.Handlers.Notifications;
+using FriendsNetwork.Application.Services.Notifications;
 using FriendsNetwork.Application.UseCases.V1.FriendRequests;
+using FriendsNetwork.Application.UseCases.V1.Notifications;
+using FriendsNetwork.Domain.Abstractions.Services.Notifications;
+using FriendsNetwork.Infrastructure.Presenters.V1.Notifications;
 using FriendsNetwork.Infrastructure.Validators.V1.FriendRequests;
+using FriendsNetwork.Infrastructure.Validators.V1.Notifications;
 
 namespace FriendsNetwork.Infrastructure.IoC
 {
@@ -67,6 +75,11 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddScoped<IDenyFriendRequestService, DenyFriendRequestService>();
             services.AddScoped<IAcceptFriendRequestService, AcceptFriendRequestService>();
             services.AddScoped<IGetPendingFriendRequestsService, GetPendingFriendRequestsService>();
+            
+            //notifications
+            services.AddScoped<ISaveNotificationService, SaveNotificationService>();
+            services.AddScoped<IGetNonDeliveredService, GetNonDeliveredService>();
+            services.AddScoped<IMarkAsDeliveredService, MarkAsDeliveredService>();
 
             return services;
         }
@@ -89,6 +102,12 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddSingleton<IPresenter<DenyFriendRequestResponse?>, DenyFriendRequestPresenter>();
             services.AddSingleton<IPresenter<AcceptFriendRequestResponse?>, AcceptFriendRequestPresenter>();
             services.AddSingleton<IPresenter<GetPendingFriendRequestsResponse?>, GetPendingFriendRequestsPresenter>();
+            
+            //notifications
+            services.AddSingleton<IPresenter<SaveNotificationResponse?>, SaveNotificationPresenter>();
+            services.AddSingleton<IPresenter<GetNonDeliveredResponse?>, GetNonDeliveredPresenter>();
+            services.AddSingleton<IPresenter<MarkAsDeliveredResponse?>, MarkAsDeliveredPresenter>();
+            
             return services;
         }
 
@@ -110,6 +129,11 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddScoped<IHandler<DenyFriendRequestRequest, DenyFriendRequestResponse>, DenyFriendRequestHandler>();
             services.AddScoped<IHandler<AcceptFriendRequestRequest, AcceptFriendRequestResponse>, AcceptFriendRequestHandler>();
             services.AddScoped<IHandler<GetPendingFriendRequestsRequest, GetPendingFriendRequestsResponse>, GetPendingFriendRequestsHandler>();
+            
+            //notifications
+            services.AddScoped<IHandler<SaveNotificationRequest, SaveNotificationResponse>, SaveNotificationHandler>();
+            services.AddScoped<IHandler<GetNonDeliveredRequest, GetNonDeliveredResponse>, GetNonDeliveredHandler>();
+            services.AddScoped<IHandler<MarkAsDeliveredRequest, MarkAsDeliveredResponse>, MarkAsDeliveredHandler>();
 
             return services;
         }
@@ -131,6 +155,11 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddScoped<IUseCase<DenyFriendRequestRequest, AppResponse<DenyFriendRequestResponse?>>, DenyFriendRequestUseCase>();
             services.AddScoped<IUseCase<AcceptFriendRequestRequest, AppResponse<AcceptFriendRequestResponse?>>, AcceptFriendRequestUseCase>();
             services.AddScoped<IUseCase<GetPendingFriendRequestsRequest, AppResponse<GetPendingFriendRequestsResponse?>>, GetPendingFriendRequestsUseCase>();
+            
+            //nofitications
+            services.AddScoped<IUseCase<SaveNotificationRequest, AppResponse<SaveNotificationResponse?>>, SaveNotificationUseCase>();
+            services.AddScoped<IUseCase<GetNonDeliveredRequest, AppResponse<GetNonDeliveredResponse?>>, GetNonDeliveredUseCase>();
+            services.AddScoped<IUseCase<MarkAsDeliveredRequest, AppResponse<MarkAsDeliveredResponse?>>, MarkAsDeliveredUseCase>();
 
             return services;
         }
@@ -153,6 +182,11 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddScoped<IValidator<DenyFriendRequestRequest>, DenyFriendRequestValidator>();
             services.AddScoped<IValidator<AcceptFriendRequestRequest>, AcceptFriendRequestValidator>();
             services.AddScoped<IValidator<GetPendingFriendRequestsRequest>, GetPendingFriendRequestsValidator>();
+            
+            //notifications
+            services.AddScoped<IValidator<SaveNotificationRequest>, SaveNotificationValidator>();
+            services.AddScoped<IValidator<GetNonDeliveredRequest>, GetNonDeliveredValidator>();
+            services.AddScoped<IValidator<MarkAsDeliveredRequest>, MarkAsDeliveredValidator>();
 
             return services;
         }
@@ -166,6 +200,9 @@ namespace FriendsNetwork.Infrastructure.IoC
 
             //friend requests repository
             services.AddScoped<IFriendRequestRepository, FriendRequestRepository>();
+            
+            //notification repository
+            services.AddScoped<INotificationRepository, NotificationRepository>();
             return services;
         }
 
@@ -174,6 +211,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             services.AddAutoMapper(typeof(UserProfile));
             services.AddAutoMapper(typeof(FriendRequestProfile));
             services.AddAutoMapper(typeof(FriendShipProfile));
+            services.AddAutoMapper(typeof(NotificationProfile));
             return services;
         }
     }

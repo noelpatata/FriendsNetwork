@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FriendsNetwork.Application\FriendsNetwork.Application.csproj" />
+    <ProjectReference Include="..\FriendsNetwork.Domain\FriendsNetwork.Domain.csproj" />
+    <ProjectReference Include="..\FriendsNetwork.Infrastructure\FriendsNetwork.Infrastructure.csproj" />
+    <ProjectReference Include="..\FriendsNetwork.PostgreSQLRepository\FriendsNetwork.PosgreSqlRepository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -2,8 +2,7 @@
 
 namespace FriendsNetwork.Application.Communication.V1.Responses.Users
 {
-    public class CreateUserResponse
+    public class CreateUserResponse: GenericResponse<UserViewModel>
     {
-        public UserViewModel? userViewModel { get; set; }
     }
 }

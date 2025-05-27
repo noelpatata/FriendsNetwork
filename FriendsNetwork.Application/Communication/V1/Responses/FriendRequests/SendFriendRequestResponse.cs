@@ -1,10 +1,9 @@
 ﻿using FriendsNetwork.Application.Communication.V1.ViewModels.FriendRequests;
 
 
-namespace FriendsNetwork.Application.Communication.V1.Requests.FriendResponse
+namespace FriendsNetwork.Application.Communication.V1.Responses.FriendRequests
 {
-    public class SendFriendRequestResponse
+    public class SendFriendRequestResponse: GenericResponse<SendFriendRequestViewModel>
     {
-        public SendFriendRequestViewModel? viewModel { get; set; }
     }
 }

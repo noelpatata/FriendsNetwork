@@ -1,65 +1,34 @@
 ﻿using FriendsNetwork.Domain.Abstractions.Repositories;
 using FriendsNetwork.Domain.Entities;
-using FriendsNetwork.SqlRepository.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace FriendsNetwork.PosgreSqlRepository
 {
     public class UserRepository(FriendsNetworkDbContext context) : IUserRepository
     {
-        private readonly FriendsNetworkDbContext _context = context;
-
         public async Task<User> Add(User user)
         {
-            try
-            {
-                if(user == null)
-                    throw new ArgumentNullException(nameof(user));
+            if(user == null)
+                throw new ArgumentNullException(nameof(user));
 
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
-                return user;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+            return user;
         }
 
         public async Task<IEnumerable<User?>> GetAll()
         {
-            try
-            {
-                return await _context.Users.ToListAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return await context.Users.ToListAsync();
         }
 
         public async Task<User?> GetByOnlineId(Guid onlineId)
         {
-            try
-            {
-                return await _context.Users.Where(x=>x.online_id == onlineId).FirstOrDefaultAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return await context.Users.Where(x=>x.online_id == onlineId).FirstOrDefaultAsync();
         }
 
         public async Task<User?> GetByUsername(string username)
         {
-            try
-            {
-                return await _context.Users.Where(x => x.username.Equals(username)).FirstOrDefaultAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return await context.Users.Where(x => x.username.Equals(username)).FirstOrDefaultAsync();
         }
     }
 }

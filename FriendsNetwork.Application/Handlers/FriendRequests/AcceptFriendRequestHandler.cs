@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FriendsNetwork.Application.Communication.V1.Requests.FriendRequests;
-using FriendsNetwork.Application.Communication.V1.Requests.FriendResponse;
+using FriendsNetwork.Application.Communication.V1.Responses.FriendRequests;
 using FriendsNetwork.Application.Communication.V1.ViewModels.FriendRequests;
 using FriendsNetwork.Domain.Abstractions.Handlers;
 using FriendsNetwork.Domain.Abstractions.Services.FriendRequests;

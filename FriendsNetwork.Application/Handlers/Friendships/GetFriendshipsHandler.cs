@@ -20,7 +20,7 @@ namespace FriendsNetwork.Application.Handlers.Friendships
 
             return new GetFriendshipsResponse
             {
-                friendsViewModel = mappedFriends
+                viewModel = mappedFriends
             };
 
         }

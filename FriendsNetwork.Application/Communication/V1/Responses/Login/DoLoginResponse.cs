@@ -7,8 +7,7 @@ using FriendsNetwork.Application.Communication.V1.ViewModels.Login;
 
 namespace FriendsNetwork.Application.Communication.V1.Responses.Login
 {
-    public class DoLoginResponse
+    public class DoLoginResponse: GenericResponse<LoginViewModel?>
     {
-        public LoginViewModel? tokenViewModel { get; set; }
     }
 }

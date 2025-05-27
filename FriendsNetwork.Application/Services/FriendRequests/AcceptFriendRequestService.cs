@@ -13,15 +13,11 @@ namespace FriendsNetwork.Application.Services.FriendRequests
         IFriendRequestRepository repo,
         IUserRepository userRepository) : IAcceptFriendRequestService
     {
-        private readonly IFriendshipRepository _friendShipRepository = friendShipRepository;
-        private readonly IFriendRequestRepository _friendRequestRepository = repo;
-        private readonly IUserRepository _userRepository = userRepository;
-
         public async Task<FriendRequest> AcceptFriendRequestAsync(long userId, Guid friendOnlineId)
         {
 
             //fetch user by online id
-            var friendUser = await _userRepository.GetByOnlineId(friendOnlineId);
+            var friendUser = await userRepository.GetByOnlineId(friendOnlineId);
             if (friendUser == null)
                 throw new UserNotFoundException();
 
@@ -29,20 +25,20 @@ namespace FriendsNetwork.Application.Services.FriendRequests
                 throw new CannotAcceptYourSelfException();
 
             //check if already friends
-            var alreadyFriends = await _friendShipRepository.AlreadyFriends(userId, friendUser.id);
+            var alreadyFriends = await friendShipRepository.AlreadyFriends(userId, friendUser.id);
             if (alreadyFriends)
                 throw new AlreadyFriendsException();
 
             //fetch received friend request
-            var friendRequest = await _friendRequestRepository.GetReceivedFriendRequestFromUser(userId, friendUser.id);
+            var friendRequest = await repo.GetReceivedFriendRequestFromUser(userId, friendUser.id);
             if (friendRequest == null)
                 throw new FriendRequestsNotFoundException();
 
             //mark friend request as accepted
-            await _friendRequestRepository.AcceptFriendRequest(friendRequest);
+            await repo.AcceptFriendRequest(friendRequest);
 
             //create friendship
-            await _friendShipRepository.AddFriendship(userId, friendUser.id);
+            await friendShipRepository.AddFriendship(userId, friendUser.id);
 
             return friendRequest;
         }

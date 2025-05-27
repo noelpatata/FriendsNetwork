@@ -16,7 +16,7 @@ namespace FriendsNetwork.Application.Handlers.Friendships
 
             var mappedDeleted = new DeleteFriendshipResponse
             {
-                deleted = deleted
+                viewModel = deleted
             };
 
             return mappedDeleted;

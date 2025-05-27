@@ -15,5 +15,6 @@ namespace FriendsNetwork.Domain.Entities
         public Guid? online_id { get; set; } = Guid.NewGuid();
 
         public ICollection<Friendship> FriendsOf { get; set; } = new Collection<Friendship>();
+        public ICollection<Notification> ReceivedNotifications { get; set; } = new Collection<Notification>();
     }
 }

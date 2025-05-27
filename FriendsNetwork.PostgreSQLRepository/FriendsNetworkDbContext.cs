@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FriendsNetwork.Domain.Entities;
 
-namespace FriendsNetwork.SqlRepository.Contexts
+namespace FriendsNetwork.PosgreSqlRepository
 {
     public class FriendsNetworkDbContext : DbContext
     {
@@ -13,6 +13,7 @@ namespace FriendsNetwork.SqlRepository.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         // Mapear entidades manualmente si lo prefieres:
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,6 +59,19 @@ namespace FriendsNetwork.SqlRepository.Contexts
                 .WithMany()
                 .HasForeignKey(fr => fr.receiver_id)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            //Notification constraints
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.SourceUser)
+                .WithMany()
+                .HasForeignKey(n => n.fromUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.DestinationUser)
+                .WithMany(u=> u.ReceivedNotifications)
+                .HasForeignKey(n => n.toUserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

@@ -2,8 +2,7 @@
 
 namespace FriendsNetwork.Application.Communication.V1.Responses.Users
 {
-    public class GetUsersResponse
+    public class GetUsersResponse: GenericResponse<IEnumerable<UserViewModel?>>
     {
-        public IEnumerable<UserViewModel?>? usersViewModel { get; set; } = [];
     }
 }

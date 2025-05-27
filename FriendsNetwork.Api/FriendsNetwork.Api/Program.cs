@@ -1,13 +1,10 @@
-using FriendsNetwork.SqlRepository.Contexts;
 using FriendsNetwork.Infrastructure.IoC;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DotNetEnv;
-
-
-
+using FriendsNetwork.PosgreSqlRepository;
 
 
 var builder = WebApplication.CreateBuilder(args);

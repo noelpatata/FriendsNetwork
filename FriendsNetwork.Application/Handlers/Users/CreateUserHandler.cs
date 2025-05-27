@@ -22,7 +22,7 @@ namespace FriendsNetwork.Application.Handlers.Users
 
             return new CreateUserResponse
             {
-                userViewModel = mappedUser
+                viewModel = mappedUser
             };
 
         }

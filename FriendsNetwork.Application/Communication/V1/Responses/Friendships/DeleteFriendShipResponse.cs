@@ -2,8 +2,7 @@
 
 namespace FriendsNetwork.Application.Communication.V1.Responses.Friendships
 {
-    public class DeleteFriendshipResponse
+    public class DeleteFriendshipResponse: GenericResponse<bool>
     {
-        public bool deleted { get; set; }
     }
 }

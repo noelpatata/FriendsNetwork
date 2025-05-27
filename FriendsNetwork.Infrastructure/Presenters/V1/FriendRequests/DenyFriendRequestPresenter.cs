@@ -1,4 +1,4 @@
-﻿using FriendsNetwork.Application.Communication.V1.Requests.FriendResponse;
+﻿using FriendsNetwork.Application.Communication.V1.Responses.FriendRequests;
 using FriendsNetwork.Domain.Abstractions.Presenters;
 using FriendsNetwork.Domain.Responses;
 

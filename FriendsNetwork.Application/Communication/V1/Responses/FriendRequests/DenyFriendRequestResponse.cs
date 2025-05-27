@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FriendsNetwork.Application.Communication.V1.ViewModels.FriendRequests;
-using FriendsNetwork.Domain.Entities;
+﻿using FriendsNetwork.Application.Communication.V1.ViewModels.FriendRequests;
 
-namespace FriendsNetwork.Application.Communication.V1.Requests.FriendResponse
+namespace FriendsNetwork.Application.Communication.V1.Responses.FriendRequests
 {
-    public class DenyFriendRequestResponse
+    public class DenyFriendRequestResponse: GenericResponse<FriendRequestViewModel>
     {
-        public FriendRequestViewModel? viewModel { get; set; }
 
     }
 }
