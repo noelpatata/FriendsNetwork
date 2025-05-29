@@ -24,32 +24,37 @@ public class NotificationDispatcherService : BackgroundService
             using var scope = _serviceProvider.CreateScope();
             var notificationRepo = scope.ServiceProvider.GetRequiredService<INotificationRepository>();
 
-            // Get undelivered notifications
-            var notifications = await notificationRepo.GetNonDeliveredNotifications();
+            // Get all connected userIds
+            var connectedUserIds = _connectionManager.GetAllConnectedUserIds();
 
-            foreach (var n in notifications)
+            foreach (var userId in connectedUserIds)
             {
-                var socket = _connectionManager.GetSocketByUserId(n.toUserId);
-                if (socket != null && socket.State == WebSocketState.Open)
+                var notifications = await notificationRepo.GetNonDeliveredNotifications(userId);
+
+                foreach (var n in notifications)
                 {
-                    var payload = JsonSerializer.Serialize(new
+                    var socket = _connectionManager.GetSocketByUserId(userId);
+                    if (socket != null && socket.State == WebSocketState.Open)
                     {
-                        type = "notification",
-                        message = n.message
-                    });
+                        var payload = JsonSerializer.Serialize(new
+                        {
+                            type = "notification",
+                            message = n.message
+                        });
 
-                    await socket.SendAsync(
-                        new ArraySegment<byte>(Encoding.UTF8.GetBytes(payload)),
-                        WebSocketMessageType.Text,
-                        true,
-                        stoppingToken);
+                        await socket.SendAsync(
+                            new ArraySegment<byte>(Encoding.UTF8.GetBytes(payload)),
+                            WebSocketMessageType.Text,
+                            true,
+                            stoppingToken);
 
-                    // Mark as delivered
-                    await notificationRepo.MarkNotificationAsDelivered(n.id);
+                        await notificationRepo.MarkNotificationAsDelivered(n.id);
+                    }
                 }
             }
 
             await Task.Delay(2000, stoppingToken);
         }
     }
+
 }

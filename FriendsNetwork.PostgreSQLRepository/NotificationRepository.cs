@@ -8,14 +8,23 @@ public class NotificationRepository(FriendsNetworkDbContext context) : INotifica
 {
     public async Task<bool> SaveNotification(long fromUserId, long toUserId, string message)
     {
-        var notification = new Domain.Entities.Notification
+        try
         {
-            fromUserId = fromUserId,
-            toUserId = toUserId,
-            message = message
-        };
-        await context.Notifications.AddAsync(notification);
-        return true;
+            var notification = new Domain.Entities.Notification
+            {
+                fromUserId = fromUserId,
+                toUserId = toUserId,
+                message = message
+            };
+            await context.Notifications.AddAsync(notification);
+            await context.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        
     }
 
     public async Task<IEnumerable<Notification>> GetNonDeliveredNotifications(long userId)

@@ -9,6 +9,7 @@ namespace FriendsNetwork.Infrastructure.Mapping.V1
         public FriendRequestProfile()
         {
             CreateMap<FriendRequest, FriendRequestViewModel>().ReverseMap();
+            CreateMap<FriendRequest, SendFriendRequestViewModel>().ReverseMap();
         }
     }
 }

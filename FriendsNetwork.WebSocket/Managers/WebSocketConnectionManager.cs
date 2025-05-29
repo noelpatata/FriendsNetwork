@@ -7,7 +7,11 @@ namespace FriendsNetwork.WebSocket.Managers;
 public class WebSocketConnectionManager : IWebSocketConnectionManager
 {
     private readonly ConcurrentDictionary<long, System.Net.WebSockets.WebSocket> _sockets = new();
-
+    
+    public IEnumerable<long> GetAllConnectedUserIds()
+    {
+        return _sockets.Keys;
+    }
     public void AddSocket(long userId, System.Net.WebSockets.WebSocket socket)
     {
         _sockets[userId] = socket;

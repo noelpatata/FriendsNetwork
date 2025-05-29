@@ -19,6 +19,11 @@ namespace FriendsNetwork.PosgreSqlRepository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            // User constraints
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.username)
+                .IsUnique();
 
             //friendship constraints
             modelBuilder.Entity<Friendship>()

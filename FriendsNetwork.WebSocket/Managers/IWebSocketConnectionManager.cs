@@ -2,6 +2,7 @@
 
 public interface IWebSocketConnectionManager
 {
+    IEnumerable<long> GetAllConnectedUserIds();
     void AddSocket(long userId, System.Net.WebSockets.WebSocket socket);
     Task RemoveSocketAsync(long userId);
     Task SendMessageAsync(long userId, string message);
