@@ -5,7 +5,7 @@ using System.Text.Json;
 using FriendsNetwork.Application.Services.Users.Exceptions;
 using FriendsNetwork.Domain.Abstractions.Repositories;
 using FriendsNetwork.Domain.Entities;
-using FriendsNetwork.WebSocket.Services;
+using FriendsNetwork.WebSocket.Factories;
 
 namespace FriendsNetwork.WebSocket.Managers;
 
@@ -66,6 +66,7 @@ public class WebSocketConnectionManager(
     public async Task ReceiveLoopAsync(long userId, System.Net.WebSockets.WebSocket socket)
     {
         var buffer = new byte[1024 * 4];
+        var factory = new WebSocketMessageHandlerFactory(serviceProvider, this);
 
         try
         {
@@ -83,13 +84,10 @@ public class WebSocketConnectionManager(
                 var messageData = JsonSerializer.Deserialize<Message>(messageJson);
                 if (messageData == null)
                     break;
-                messageData.senderId = userId; 
+                messageData.senderId = userId;
 
-                
-
-                using var scope = serviceProvider.CreateScope();
-                var dispatcher = scope.ServiceProvider.GetRequiredService<IMessageDispatcherService>();
-                await dispatcher.DispatchAsync(messageData);
+                var handler = factory.GetDispatcher(messageData.type);
+                await handler.DispatchAsync(messageData);
             }
         }
         catch (Exception ex)
@@ -97,4 +95,5 @@ public class WebSocketConnectionManager(
             Console.WriteLine($"WebSocket receive error for user {userId}: {ex}");
         }
     }
+
 }

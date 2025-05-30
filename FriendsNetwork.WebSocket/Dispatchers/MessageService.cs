@@ -6,27 +6,14 @@ using FriendsNetwork.Domain.Abstractions.Repositories;
 using FriendsNetwork.Domain.Entities;
 using FriendsNetwork.WebSocket.Managers;
 
-namespace FriendsNetwork.WebSocket.Services;
+namespace FriendsNetwork.WebSocket.Dispatchers;
 
-public class MessageDispatcherService(
+public class MessageService(
     IServiceProvider serviceProvider,
-    IWebSocketConnectionManager connectionManager) : IMessageDispatcherService
+    IWebSocketConnectionManager connectionManager) : IWebSocketMessageDispatcher
 {
+
     public async Task DispatchAsync(Message message)
-    {
-        switch (message.type)
-        {
-            case "message":
-                await HandleTextMessageAsync(message);
-                break;
-
-            // future: typing indicator, read receipt, file, etc.
-            default:
-                throw new InvalidOperationException($"Unknown message type: {message.type}");
-        }
-    }
-
-    private async Task HandleTextMessageAsync(Message message)
     {
         using var scope = serviceProvider.CreateScope();
         var userRepo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
@@ -34,11 +21,11 @@ public class MessageDispatcherService(
 
         var receiverUser = await userRepo.GetByOnlineId(message.receiverOnlineId);
         if (receiverUser == null)
-            throw new UserNotFoundException();
+            return;
         
         var sender = await userRepo.GetById(message.senderId);
         if (sender == null)
-            throw new UserNotFoundException();
+            return;
         var socket = connectionManager.GetSocketByUserId(receiverUser.id);
         if (socket == null || socket.State != WebSocketState.Open)
         {

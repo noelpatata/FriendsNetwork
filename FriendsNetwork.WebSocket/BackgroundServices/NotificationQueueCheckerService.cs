@@ -3,11 +3,12 @@ using System.Text;
 using System.Text.Json;
 using FriendsNetwork.Application.Services.Users.Exceptions;
 using FriendsNetwork.Domain.Abstractions.Repositories;
+using FriendsNetwork.Domain.Entities;
 using FriendsNetwork.WebSocket.Managers;
 
-namespace FriendsNetwork.WebSocket.Services;
+namespace FriendsNetwork.WebSocket.BackgroundServices;
 
-public class NotificationDispatcherService(
+public class NotificationQueueCheckerService(
     IServiceProvider serviceProvider,
     IWebSocketConnectionManager connectionManager)
     : BackgroundService
@@ -57,5 +58,4 @@ public class NotificationDispatcherService(
             await Task.Delay(2000, stoppingToken);
         }
     }
-
 }

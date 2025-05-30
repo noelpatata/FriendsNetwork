@@ -2,10 +2,10 @@ using FriendsNetwork.Infrastructure.IoC;
 using FriendsNetwork.PosgreSqlRepository;
 using FriendsNetwork.WebSocket.Helpers;
 using FriendsNetwork.WebSocket.Managers;
-using FriendsNetwork.WebSocket.Services;
 using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using FriendsNetwork.WebSocket.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 //FriendsNetwork root directory (from websocket project)
@@ -38,8 +38,9 @@ builder.Services.AddDbContext<FriendsNetworkDbContext>(options =>
 //websocket services
 builder.Services.AddSingleton<JwtHelper>();
 builder.Services.AddSingleton<IWebSocketConnectionManager, WebSocketConnectionManager>();
-builder.Services.AddScoped<IMessageDispatcherService, MessageDispatcherService>();
-builder.Services.AddHostedService<NotificationDispatcherService>();
+
+//background services
+builder.Services.AddHostedService<NotificationQueueCheckerService>();
 
 
 builder.Services.AddWebSockets(options =>
