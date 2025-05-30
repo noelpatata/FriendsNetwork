@@ -4,3 +4,4 @@ obj/
 .vs/
 /FriendsNetwork.PostgreSQLRepository/Migrations/
 certificate.pfx
+.idea/
