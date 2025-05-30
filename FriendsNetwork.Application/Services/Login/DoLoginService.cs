@@ -7,18 +7,14 @@ public class DoLoginService(
         IPasswordHasher passwordHasher,
         ITokenGenerator tokenGenerator) : IDoLoginService
 {
-    private readonly IUserRepository _userRepository = userRepository;
-    private readonly IPasswordHasher _passwordHasher = passwordHasher;
-    private readonly ITokenGenerator _tokenGenerator = tokenGenerator;
-
     public async Task<string> DoLoginServiceAsync(string username, string password)
     {
-        var user = await _userRepository.GetByUsername(username);
-        if (user == null || !_passwordHasher.VerifyPassword(password, user.hashed_password, user.salt))
+        var user = await userRepository.GetByUsername(username);
+        if (user == null || !passwordHasher.VerifyPassword(password, user.hashed_password, user.salt))
         {
             throw new InvalidOperationException("Invalid username or password");
         }
 
-        return _tokenGenerator.Generate(user.id);
+        return tokenGenerator.Generate(user.id);
     }
 }
