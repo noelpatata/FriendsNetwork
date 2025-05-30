@@ -34,22 +34,22 @@ public class NotificationDispatcherService : BackgroundService
                 foreach (var n in notifications)
                 {
                     var socket = _connectionManager.GetSocketByUserId(userId);
-                    if (socket != null && socket.State == WebSocketState.Open)
+                    if (socket == null || socket.State != WebSocketState.Open)
+                        continue;
+                    
+                    var payload = JsonSerializer.Serialize(new
                     {
-                        var payload = JsonSerializer.Serialize(new
-                        {
-                            type = "notification",
-                            message = n.message
-                        });
+                        type = "notification",
+                        message = n.message
+                    });
 
-                        await socket.SendAsync(
-                            new ArraySegment<byte>(Encoding.UTF8.GetBytes(payload)),
-                            WebSocketMessageType.Text,
-                            true,
-                            stoppingToken);
+                    await socket.SendAsync(
+                        new ArraySegment<byte>(Encoding.UTF8.GetBytes(payload)),
+                        WebSocketMessageType.Text,
+                        true,
+                        stoppingToken);
 
-                        await notificationRepo.MarkNotificationAsDelivered(n.id);
-                    }
+                    await notificationRepo.MarkNotificationAsDelivered(n.id);
                 }
             }
 

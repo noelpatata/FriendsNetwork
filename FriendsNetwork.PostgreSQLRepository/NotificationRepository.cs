@@ -8,22 +8,15 @@ public class NotificationRepository(FriendsNetworkDbContext context) : INotifica
 {
     public async Task<bool> SaveNotification(long fromUserId, long toUserId, string message)
     {
-        try
+        var notification = new Domain.Entities.Notification
         {
-            var notification = new Domain.Entities.Notification
-            {
-                fromUserId = fromUserId,
-                toUserId = toUserId,
-                message = message
-            };
-            await context.Notifications.AddAsync(notification);
-            await context.SaveChangesAsync();
-            return true;
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
+            fromUserId = fromUserId,
+            toUserId = toUserId,
+            message = message
+        };
+        await context.Notifications.AddAsync(notification);
+        await context.SaveChangesAsync();
+        return true;
         
     }
 

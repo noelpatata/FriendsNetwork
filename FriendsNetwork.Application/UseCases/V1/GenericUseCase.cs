@@ -12,20 +12,16 @@ namespace FriendsNetwork.Application.UseCases.V1
         IPresenter<TResponse> presenter)
         : IUseCase<TRequest, AppResponse<TResponse?>>
     {
-        private readonly IHandler<TRequest, TResponse?> _handler = handler;
-        private readonly IValidator<TRequest?> _validator = validator;
-        private readonly IPresenter<TResponse> _presenter = presenter;
-
         public async Task<AppResponse<TResponse?>> ExecuteAsync(TRequest? request)
         {
             try
             {
-                var validationResult = _validator.Validate(request);
+                var validationResult = validator.Validate(request);
                 if (!validationResult.IsValid) throw new Exception(validationResult.ToString());
 
-                var result = await _handler.HandleAsync(request);
+                var result = await handler.HandleAsync(request);
 
-                return await _presenter.PresentAsync(result);
+                return await presenter.PresentAsync(result);
 
             }
             catch (Exception ex)

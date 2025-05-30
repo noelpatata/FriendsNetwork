@@ -16,7 +16,7 @@ namespace FriendsNetwork.Application.Handlers.Users
         {
             var user = await _userGetService.GetByUsernameServiceAsync(request!.username);
 
-            var mappedUser = _mapper.Map<UserHashViewModel?>(user);
+            var mappedUser = _mapper.Map<UserViewModel?>(user);
 
             return new GetByUsernameResponse
             {
