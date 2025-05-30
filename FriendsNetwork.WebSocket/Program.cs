@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
-//FriendsNetwork root directory
+//FriendsNetwork root directory (from websocket project)
 var envPath = Path.GetFullPath(Path.Combine(builder.Environment.ContentRootPath, "..", ".env"));
 Env.Load(envPath);
 
@@ -21,8 +21,7 @@ builder.Services.AddServices()
     .AddPresenters()
     .AddMappers();
 
-//dbContext
-//read .env for building connection string
+//reading .env variables
 var dbHost = Environment.GetEnvironmentVariable("POSTGRESQL_HOST");
 var dbName = Environment.GetEnvironmentVariable("POSTGRESQL_DATABASE");
 var dbUser = Environment.GetEnvironmentVariable("POSTGRESQL_USER");
@@ -36,16 +35,19 @@ var connectionString = $"Host={dbHost};Database={dbName};Username={dbUser};Passw
 builder.Services.AddDbContext<FriendsNetworkDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+//websocket services
 builder.Services.AddSingleton<JwtHelper>();
 builder.Services.AddSingleton<IWebSocketConnectionManager, WebSocketConnectionManager>();
+builder.Services.AddScoped<IMessageDispatcherService, MessageDispatcherService>();
 builder.Services.AddHostedService<NotificationDispatcherService>();
 
-// Enable WebSocket support
+
 builder.Services.AddWebSockets(options =>
 {
     options.KeepAliveInterval = TimeSpan.FromSeconds(30);
 });
 
+//websocket ssl cofniguration
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     var certPath = Environment.GetEnvironmentVariable("WS_SSL_CERT_PATH");
@@ -61,6 +63,7 @@ var app = builder.Build();
 
 app.UseWebSockets();
 
+//websocket endpoint and jwt authentication
 app.Map("/ws", async context =>
 {
     if (!context.WebSockets.IsWebSocketRequest)

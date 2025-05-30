@@ -8,5 +8,6 @@ namespace FriendsNetwork.Domain.Abstractions.Repositories
         Task<IEnumerable<User?>> GetAll();
         Task<User> Add(User user);
         Task<User?> GetByOnlineId(Guid onlineId);
+        Task<User?> GetById(long id);
     }
 }
