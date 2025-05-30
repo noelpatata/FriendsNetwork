@@ -5,3 +5,4 @@ obj/
 /FriendsNetwork.PostgreSQLRepository/Migrations/
 certificate.pfx
 .idea/
+FriendsNetwork.sln.DotSettings.user
