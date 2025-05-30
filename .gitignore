@@ -6,3 +6,4 @@ obj/
 certificate.pfx
 .idea/
 FriendsNetwork.sln.DotSettings.user
+.editorconfig/
