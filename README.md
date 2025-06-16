@@ -17,6 +17,7 @@ docker run -p 5432:5432 -e POSTGRESQL_PASSWORD=s --name postgresql bitnami/postg
 Before running the project, we need to create the database with the following commands:
 
 ``` bash
+dotnet tool install --global dotnet-ef
 dotnet ef migrations add InitialCreate --project FriendsNetwork.PostgreSQLRepository --startup-project FriendsNetwork.Api/FriendsNetwork.Api
 dotnet ef database update --project FriendsNetwork.PostgreSQLRepository --startup-project FriendsNetwork.Api\FriendsNetwork.Api
 ```
