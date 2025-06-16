@@ -65,6 +65,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             //users
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<ICreateUserService, CreateUserService>();
+            services.AddScoped<IGetByIdService, GetByIdService>();
 
             //friendships
             services.AddScoped<IGetFriendShipsService, GetFriendshipsService>();
@@ -119,6 +120,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             //users
             services.AddScoped<IHandler<GetUsersRequest, GetUsersResponse>, GetUsersHandler>();
             services.AddScoped<IHandler<CreateUserRequest, CreateUserResponse>, CreateUserHandler>();
+            services.AddScoped<IHandler<GetByIdRequest, GetByIdResponse>, GetByIdHandler>();
 
             //friendships
             services.AddScoped<IHandler<GetFriendshipsRequest, GetFriendshipsResponse>, GetFriendshipsHandler>();

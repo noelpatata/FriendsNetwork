@@ -9,12 +9,9 @@ namespace FriendsNetwork.Application.Services.Users
         IUserRepository userRepository,
         IPasswordHasher passwordHasher): ICreateUserService
     {
-        private readonly IUserRepository _userRepository = userRepository;
-        private readonly IPasswordHasher _passwordHasher = passwordHasher;
-
         public async Task<User?> CreateUserServiceAsync(string username, string password)
         {
-            var (hash, salt) = _passwordHasher.HashPassword(password);
+            var (hash, salt) = passwordHasher.HashPassword(password);
 
             var user = new User
             {
@@ -24,7 +21,7 @@ namespace FriendsNetwork.Application.Services.Users
                 salt = salt
             };
 
-            return await _userRepository.Add(user);
+            return await userRepository.Add(user);
         }
     }
 }
