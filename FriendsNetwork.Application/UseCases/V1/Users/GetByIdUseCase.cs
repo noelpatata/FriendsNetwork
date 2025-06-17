@@ -6,9 +6,9 @@ using FriendsNetwork.Domain.Abstractions.Presenters;
 
 namespace FriendsNetwork.Application.UseCases.V1.Users;
 
-public class GetById : GenericUseCase<GetByIdRequest, GetByIdResponse>
+public class GetByIdUseCase : GenericUseCase<GetByIdRequest, GetByIdResponse>
 {
-    public GetById(
+    public GetByIdUseCase(
         IHandler<GetByIdRequest, GetByIdResponse?> handler,
         IValidator<GetByIdRequest?> validator,
         IPresenter<GetByIdResponse> presenter):

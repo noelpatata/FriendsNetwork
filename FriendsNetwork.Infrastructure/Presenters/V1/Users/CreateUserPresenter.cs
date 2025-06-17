@@ -2,7 +2,7 @@
 using FriendsNetwork.Domain.Abstractions.Presenters;
 using FriendsNetwork.Domain.Responses;
 
-namespace FriendsNetwork.FriendsNetwork.Infrastructure.Presenters.V1.Users
+namespace FriendsNetwork.Infrastructure.Presenters.V1.Users
 {
     public class CreateUserPresenter :IPresenter<CreateUserResponse?>
     {

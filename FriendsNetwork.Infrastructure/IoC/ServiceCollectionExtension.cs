@@ -15,7 +15,6 @@ using FriendsNetwork.Application.Communication.V1.Requests.Users;
 using FriendsNetwork.Application.Handlers.Users;
 using FriendsNetwork.Infrastructure.Validators.V1.Users;
 using FriendsNetwork.PosgreSqlRepository;
-using FriendsNetwork.FriendsNetwork.Infrastructure.Presenters.V1.Users;
 using FriendsNetwork.Domain.Abstractions.Services.Security;
 using FriendsNetwork.Infrastructure.Security;
 using FriendsNetwork.Application.Communication.V1.Responses.Login;
@@ -93,6 +92,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             //users
             services.AddSingleton<IPresenter<GetUsersResponse?>, GetUsersPresenter>();
             services.AddSingleton<IPresenter<CreateUserResponse?>, CreateUserPresenter>();
+            services.AddSingleton<IPresenter<GetByIdResponse?>, GetByIdPresenter>();
 
             //friendships
             services.AddSingleton<IPresenter<GetFriendshipsResponse?>, GetFriendshipsPresenter>();
@@ -148,7 +148,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             //users
             services.AddScoped<IUseCase<GetUsersRequest, AppResponse<GetUsersResponse?>>, GetUsersUseCase>();
             services.AddScoped<IUseCase<CreateUserRequest, AppResponse<CreateUserResponse?>>, CreateUserUseCase>();
-
+            services.AddScoped<IUseCase<GetByIdRequest, AppResponse<GetByIdResponse?>>, GetByIdUseCase>();
             //friendships
             services.AddScoped<IUseCase<GetFriendshipsRequest, AppResponse<GetFriendshipsResponse?>>, GetFriendshipsUseCase>();
             services.AddScoped<IUseCase<DeleteFriendshipRequest, AppResponse<DeleteFriendshipResponse?>>, DeleteFriendshipUseCase>();
@@ -174,6 +174,7 @@ namespace FriendsNetwork.Infrastructure.IoC
             //users
             services.AddScoped<IValidator<GetUsersRequest>, GetUsersValidator>();
             services.AddScoped<IValidator<CreateUserRequest>, CreateUserValidator>();
+            services.AddScoped<IValidator<GetByIdRequest>, GetByIdValidator>();
 
             //friendships
             services.AddScoped<IValidator<GetFriendshipsRequest>, GetFriendshipsValidator>();

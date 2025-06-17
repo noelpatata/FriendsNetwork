@@ -11,7 +11,8 @@ namespace FriendsNetwork.Api.Controllers
     [Route("api/[controller]")]
     public class UserController(
         IUseCase<GetUsersRequest, AppResponse<GetUsersResponse>> getUsersUseCase,
-        IUseCase<CreateUserRequest, AppResponse<CreateUserResponse>> createUserUseCase)
+        IUseCase<CreateUserRequest, AppResponse<CreateUserResponse>> createUserUseCase,
+        IUseCase<GetByIdRequest, AppResponse<GetByIdResponse>> getByIdUseCase)
         : ControllerBase
     {
         [Authorize]
@@ -34,6 +35,25 @@ namespace FriendsNetwork.Api.Controllers
                 return BadRequest(response);
 
             return Ok(response);
+        }
+
+        [HttpGet("user")]
+        public async Task<ActionResult<AppResponse<GetByIdResponse>>> GetById()
+        {
+            var userIdClaim = User.FindFirst("userId")?.Value;
+
+            if (string.IsNullOrEmpty(userIdClaim) || !long.TryParse(userIdClaim, out long userId))
+            {
+                return Unauthorized("Invalid token");
+            }
+
+            var request = new GetByIdRequest()
+            {
+                userId = userId
+            };
+            
+            return Ok(await getByIdUseCase.ExecuteAsync(request));
+
         }
     }
 }
